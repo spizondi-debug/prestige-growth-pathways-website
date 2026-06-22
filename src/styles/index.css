@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   PRESTIGE GROWTH PATHWAYS — GLOBAL STYLES
+   Design tokens live in tailwind.config.js. This file holds
+   base resets, reusable component classes and brand utilities.
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-900 text-cloud-100 font-sans;
+    background-image:
+      radial-gradient(50% 40% at 80% -10%, rgba(30, 79, 216, 0.18) 0%, transparent 60%),
+      radial-gradient(40% 35% at 0% 10%, rgba(15, 184, 122, 0.14) 0%, transparent 60%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background: rgba(15, 184, 122, 0.35);
+    color: #fff;
+  }
+
+  /* Subtle custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070c1b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#1e4fd8, #0fb87a);
+    border-radius: 999px;
+    border: 2px solid #070c1b;
+  }
+}
+
+@layer components {
+  /* Frosted glass surface */
+  .glass {
+    @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-glass;
+  }
+
+  .glass-soft {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-brand-gradient-soft bg-clip-text text-transparent;
+  }
+
+  /* Section container */
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cloud-200;
+  }
+
+  /* Gradient border card (premium frame) */
+  .frame-gradient {
+    position: relative;
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(#0a1124, #0a1124) padding-box,
+      linear-gradient(135deg, rgba(30, 79, 216, 0.7), rgba(15, 184, 122, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
+
+  /* Animated hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  }
+
+  /* Noise overlay helper */
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
