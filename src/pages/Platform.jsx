@@ -17,6 +17,8 @@ const groups = [
 
 export default function Platform() {
   const byId = Object.fromEntries(modules.map((m) => [m.id, m]))
+  // Respects the GitHub Pages sub-path so the video + poster resolve in dev and prod.
+  const base = import.meta.env.BASE_URL
 
   return (
     <PageShell>
@@ -46,9 +48,10 @@ export default function Platform() {
                 controls
                 playsInline
                 preload="metadata"
+                poster={`${base}images/platform-video-thumbnail.svg`}
               >
-                <source src="/videos/platform-overview.mp4" type="video/mp4" />
-                Your browser does not support embedded video.
+                <source src={`${base}videos/platform-overview.mp4`} type="video/mp4" />
+                Your browser cannot play this video. Please call Prestige on 010 065 0822 for a walkthrough.
               </video>
             </div>
           </Reveal>
