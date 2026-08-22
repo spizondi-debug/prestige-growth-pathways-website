@@ -30,6 +30,31 @@ export default function Platform() {
         <Button to="/training-solutions" variant="secondary" size="lg" icon="ArrowRight">Training solutions</Button>
       </PageHero>
 
+      {/* Platform overview video */}
+      <section className="bg-paper py-16">
+        <div className="container-px">
+          <SectionHeading
+            eyebrow="See it in action"
+            title="Explore Prestige Growth Pathways"
+            highlight="Growth Pathways"
+            intro="Watch a guided overview of how the platform brings workforce insight, development and measurable outcomes together in one connected experience."
+          />
+          <Reveal>
+            <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-[2rem] border border-line bg-heading shadow-lift">
+              <video
+                className="aspect-video w-full bg-heading object-contain"
+                controls
+                playsInline
+                preload="metadata"
+              >
+                <source src="/videos/platform-overview.mp4" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Intelligence flow */}
       <section className="bg-mist py-16">
         <div className="container-px">
