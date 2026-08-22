@@ -1,39 +1,55 @@
 import Reveal from '../ui/Reveal.jsx'
-import Icon from '../ui/Icon.jsx'
-import Figure from '../shared/Figure.jsx'
-import { strengths } from '../../data/content.js'
-import { images } from '../../data/images.js'
+import IconTile from '../shared/IconTile.jsx'
+
+const pillars = [
+  {
+    icon: 'ClipboardCheck',
+    accent: 'blue',
+    title: 'Manager accountability, built in',
+    body: 'Growth stops being HR’s problem alone. Structured manager reviews make every leader an active, accountable owner of their team’s development.',
+  },
+  {
+    icon: 'Wrench',
+    accent: 'green',
+    title: 'Workplace application that sticks',
+    body: 'Learning only counts when it changes behaviour. We drive structured on-the-job application so capability shows up where the work happens.',
+  },
+  {
+    icon: 'LineChart',
+    accent: 'blue',
+    title: 'Measurable outcomes, not activity',
+    body: 'Completion rates don’t move a business. We connect development to performance, productivity and ROI leadership can actually see.',
+  },
+]
 
 export default function MessagingBand() {
   return (
-    <section className="bg-mist py-20 sm:py-24">
-      <div className="container-px grid gap-12 lg:grid-cols-2 lg:items-center">
-        {/* Image */}
-        <Reveal>
-          <Figure img={images.homeTraining} ratio="5 / 4" className="shadow-card" />
-        </Reveal>
-
-        {/* Copy + strengths */}
-        <div>
+    <section className="relative bg-mist py-24">
+      <div className="container-px">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
-            <p className="section-label">Why organisations work with Prestige</p>
-            <h2 className="text-display-md font-semibold text-heading">
-              An established training partner, supported by a practical platform
+            <span className="eyebrow mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
+              Why it works
+            </span>
+            <h2 className="text-display-md font-bold text-heading">
+              Intelligence is nothing without{' '}
+              <span className="text-gradient">accountability and application</span>
             </h2>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-body">
-              Prestige Tutelage brings the training experience, and Prestige Growth Pathways keeps
-              development organised and visible. Together they help your people build real skills at work.
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+              Most platforms stop at content. Prestige Growth Pathways is engineered around the
+              three things that actually move performance.
             </p>
           </Reveal>
 
-          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-            {strengths.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.06}>
-                <div className="flex gap-3">
-                  <Icon name={s.icon} className="mt-0.5 h-5 w-5 shrink-0 text-prestige-blue" strokeWidth={1.8} />
+          <div className="space-y-4">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08}>
+                <div className="card flex gap-5 p-5 transition-colors hover:border-prestige-blue/30">
+                  <IconTile name={p.icon} accent={p.accent} size="lg" />
                   <div>
-                    <h3 className="text-base font-semibold text-heading">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-body">{s.body}</p>
+                    <h3 className="text-lg font-semibold text-heading">{p.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-body">{p.body}</p>
                   </div>
                 </div>
               </Reveal>

@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   PRESTIGE GROWTH PATHWAYS — GLOBAL STYLES
-   Restrained, corporate, human. DM Sans throughout.
-   Light neutrals dominate; navy is used only for the footer and
-   one selective CTA band. No glass / glow / gradient-heavy effects.
+   PRESTIGE GROWTH PATHWAYS — GLOBAL STYLES  (LIGHT THEME)
+   Central light design system. Tokens live in tailwind.config.js.
+   ~70–80% of the site is light; navy is used selectively for the
+   final CTA, footer and the occasional impact band.
    ============================================================ */
 
 @layer base {
@@ -32,31 +32,24 @@
 
   h1, h2, h3, h4 {
     @apply font-display text-heading;
-    font-weight: 600;
   }
 
   ::selection {
-    background: rgba(30, 79, 216, 0.14);
-    color: #0d2340;
+    background: rgba(30, 79, 216, 0.16);
+    color: #0b1b3b;
   }
 
-  /* Visible, consistent focus states for keyboard users */
-  :focus-visible {
-    outline: 2px solid #1e4fd8;
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
+  /* Subtle light scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #eef2f7;
+    background: #eef2f8;
   }
   ::-webkit-scrollbar-thumb {
-    background: #c2ccdb;
+    background: linear-gradient(#1e4fd8, #0fb87a);
     border-radius: 999px;
-    border: 2px solid #eef2f7;
+    border: 2px solid #eef2f8;
   }
 }
 
@@ -66,50 +59,87 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  /* -------- Section label (replaces the old eyebrow pill) -------- */
-  .section-label {
-    @apply mb-4 text-[0.95rem] font-semibold text-prestige-blue;
-  }
-
-  /* -------- Primary flat card -------- */
+  /* -------- Primary light card -------- */
   .card {
-    @apply relative rounded-card border border-line bg-white shadow-card transition-shadow duration-300;
+    @apply relative rounded-3xl border border-line bg-white shadow-card transition-all duration-500;
   }
   .card-interactive {
-    @apply hover:border-line hover:shadow-card-hover;
+    @apply hover:-translate-y-1.5 hover:border-prestige-blue/30 hover:shadow-card-hover;
   }
 
-  /* -------- Dark navy surface (footer + one CTA band) -------- */
+  /* Gradient-framed light card (premium emphasis) */
+  .frame-gradient {
+    position: relative;
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(135deg, rgba(30, 79, 216, 0.55), rgba(15, 184, 122, 0.5)) border-box;
+    border: 1.5px solid transparent;
+    box-shadow: 0 10px 30px -18px rgba(11, 27, 59, 0.2);
+  }
+
+  /* Frosted surfaces (used by the white navbar) */
+  .glass {
+    @apply relative rounded-3xl border border-line bg-white/85 backdrop-blur-xl shadow-soft;
+  }
+  .glass-soft {
+    @apply rounded-2xl border border-line bg-white/70 backdrop-blur-md;
+  }
+
+  /* -------- Dark (navy) surfaces for selective impact sections -------- */
   .surface-dark {
-    @apply bg-navy-800 text-cloud-100;
+    @apply bg-navy-900 text-cloud-100;
+  }
+  .card-on-dark {
+    @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-md;
   }
 
-  /* -------- Media / image slot for real photography -------- */
-  .media {
-    @apply relative overflow-hidden rounded-[16px] border border-line bg-mist;
+  /* -------- Eyebrow label (light) -------- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-prestige-blue/15 bg-sky px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-prestige-blue;
+  }
+  .eyebrow-on-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cloud-200;
   }
 
-  /* Brand wordmark gradient — reserved for the Logo only (brand identity). */
+  /* -------- Gradient text (use sparingly, for emphasis) -------- */
   .text-gradient {
-    background-image: linear-gradient(120deg, #1e4fd8 0%, #0fb87a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    @apply bg-gradient-to-r from-prestige-blue to-prestige-green bg-clip-text text-transparent;
   }
 
-  /* Hairlines */
+  /* Hairline divider */
   .hairline {
-    @apply h-px w-full bg-line;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(11, 27, 59, 0.12), transparent);
   }
   .hairline-on-dark {
     height: 1px;
-    background: rgba(255, 255, 255, 0.14);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  }
+
+  /* Noise overlay helper (kept very subtle for texture) */
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Placeholder image frame (for real photography drop-in) */
+  .photo-frame {
+    @apply relative overflow-hidden rounded-2xl border border-line bg-mist;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
 
   @media (prefers-reduced-motion: reduce) {

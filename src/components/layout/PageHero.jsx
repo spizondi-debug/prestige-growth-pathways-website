@@ -1,27 +1,18 @@
 import Reveal from '../ui/Reveal.jsx'
+import Aurora from '../shared/Aurora.jsx'
 
 /**
- * PageHero — interior page header. Left-aligned and restrained by default.
+ * PageHero — standard interior page header (light theme) with eyebrow,
+ * title and intro. Sits on a white → very pale blue background.
  */
-export default function PageHero({
-  label,
-  eyebrow, // alias
-  title,
-  highlight,
-  intro,
-  align = 'left',
-  children,
-}) {
-  const sectionLabel = label ?? eyebrow
-  const centered = align === 'center'
-
+export default function PageHero({ eyebrow, title, highlight, intro, variant = 'blue', children }) {
   const renderTitle = () => {
     if (highlight && title.includes(highlight)) {
       const [before, after] = title.split(highlight)
       return (
         <>
           {before}
-          <span className="text-prestige-blue">{highlight}</span>
+          <span className="text-gradient">{highlight}</span>
           {after}
         </>
       )
@@ -30,29 +21,31 @@ export default function PageHero({
   }
 
   return (
-    <section className="border-b border-line bg-mist pb-14 pt-32 sm:pt-40">
+    <section className="relative overflow-hidden bg-mesh-light pb-16 pt-36 sm:pt-44">
+      <Aurora variant={variant} tone="light" />
       <div className="container-px">
-        <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''}`}>
-          {sectionLabel && (
+        <div className="mx-auto max-w-3xl text-center">
+          {eyebrow && (
             <Reveal>
-              <p className="section-label">{sectionLabel}</p>
+              <span className="eyebrow mb-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
+                {eyebrow}
+              </span>
             </Reveal>
           )}
           <Reveal delay={0.05}>
-            <h1 className="text-display-lg font-semibold text-balance text-heading">{renderTitle()}</h1>
+            <h1 className="text-display-lg font-bold text-balance text-heading">{renderTitle()}</h1>
           </Reveal>
           {intro && (
             <Reveal delay={0.1}>
-              <p className={`mt-5 text-lg leading-relaxed text-body ${centered ? 'mx-auto max-w-2xl' : 'max-w-2xl'}`}>
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-balance text-body">
                 {intro}
               </p>
             </Reveal>
           )}
           {children && (
             <Reveal delay={0.15}>
-              <div className={`mt-8 flex flex-wrap items-center gap-4 ${centered ? 'justify-center' : ''}`}>
-                {children}
-              </div>
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">{children}</div>
             </Reveal>
           )}
         </div>

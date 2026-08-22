@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://spizondi-debug.github.io/prestige-growth-pathways-website/sitemap.xml

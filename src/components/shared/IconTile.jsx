@@ -1,32 +1,34 @@
 import Icon from '../ui/Icon.jsx'
 
 /**
- * IconTile — small, flat brand-tinted icon holder. No glow or gradient.
+ * IconTile — soft brand-tinted icon chip used across light cards.
  * accent: 'blue' | 'green'
- * tone:   'light' (default) | 'dark'
+ * tone:   'light' (default) | 'dark' (for navy sections)
  */
 export default function IconTile({ name, accent = 'blue', size = 'md', tone = 'light' }) {
   const sizes = {
-    sm: 'h-9 w-9 rounded-lg',
-    md: 'h-11 w-11 rounded-lg',
-    lg: 'h-12 w-12 rounded-lg',
+    sm: 'h-10 w-10 rounded-xl',
+    md: 'h-12 w-12 rounded-2xl',
+    lg: 'h-14 w-14 rounded-2xl',
   }
-  const iconSize = { sm: 'h-4 w-4', md: 'h-5 w-5', lg: 'h-6 w-6' }
+  const iconSize = { sm: 'h-5 w-5', md: 'h-6 w-6', lg: 'h-7 w-7' }
 
   const onDark = tone === 'dark'
   const accents = onDark
     ? {
-        blue: 'text-prestige-blue-soft bg-white/10',
-        green: 'text-prestige-green bg-white/10',
+        blue: 'text-prestige-blue-soft bg-white/[0.06] border-white/10',
+        green: 'text-prestige-green-bright bg-white/[0.06] border-white/10',
       }
     : {
-        blue: 'text-prestige-blue bg-prestige-blue/[0.08]',
-        green: 'text-prestige-green-deep bg-prestige-green/[0.10]',
+        blue: 'text-prestige-blue bg-sky border-prestige-blue/15',
+        green: 'text-prestige-green-deep bg-mint border-prestige-green/20',
       }
 
   return (
-    <span className={`inline-flex items-center justify-center ${sizes[size]} ${accents[accent]}`}>
-      <Icon name={name} className={iconSize[size]} strokeWidth={1.8} />
+    <span
+      className={`relative inline-flex items-center justify-center ${sizes[size]} border ${accents[accent]}`}
+    >
+      <Icon name={name} className={`relative ${iconSize[size]}`} strokeWidth={1.8} />
     </span>
   )
 }
