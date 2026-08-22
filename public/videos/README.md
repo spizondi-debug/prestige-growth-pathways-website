@@ -26,4 +26,4 @@ ffmpeg -i source.mov -c:v libx264 -profile:v high -pix_fmt yuv420p \
        -c:a aac -b:a 128k -movflags +faststart platform-overview.mp4
 ```
 
-The poster shown before playback is `public/images/platform-video-thumbnail.svg`.
+The poster shown before playback is `public/images/platform-video-thumbnail.webp`.

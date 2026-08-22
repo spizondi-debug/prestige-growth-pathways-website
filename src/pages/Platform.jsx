@@ -44,11 +44,11 @@ export default function Platform() {
           <Reveal>
             <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-[2rem] border border-line bg-heading shadow-lift">
               <video
-                className="aspect-video w-full bg-heading object-contain"
+                className="aspect-video w-full bg-heading object-cover"
                 controls
                 playsInline
                 preload="metadata"
-                poster={`${base}images/platform-video-thumbnail.svg`}
+                poster={`${base}images/platform-video-thumbnail.webp`}
               >
                 <source src={`${base}videos/platform-overview.mp4`} type="video/mp4" />
                 Your browser cannot play this video. Please call Prestige on 010 065 0822 for a walkthrough.
