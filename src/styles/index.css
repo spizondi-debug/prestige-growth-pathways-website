@@ -5,14 +5,15 @@
 @tailwind utilities;
 
 /* ============================================================
-   PRESTIGE GROWTH PATHWAYS — GLOBAL STYLES
-   Design tokens live in tailwind.config.js. This file holds
-   base resets, reusable component classes and brand utilities.
+   PRESTIGE GROWTH PATHWAYS — GLOBAL STYLES  (LIGHT THEME)
+   Central light design system. Tokens live in tailwind.config.js.
+   ~70–80% of the site is light; navy is used selectively for the
+   final CTA, footer and the occasional impact band.
    ============================================================ */
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   * {
@@ -25,86 +26,110 @@
   }
 
   body {
-    @apply bg-ink-900 text-cloud-100 font-sans;
-    background-image:
-      radial-gradient(50% 40% at 80% -10%, rgba(30, 79, 216, 0.18) 0%, transparent 60%),
-      radial-gradient(40% 35% at 0% 10%, rgba(15, 184, 122, 0.14) 0%, transparent 60%);
-    background-attachment: fixed;
+    @apply bg-paper font-sans text-body;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
-    @apply font-display;
+    @apply font-display text-heading;
   }
 
   ::selection {
-    background: rgba(15, 184, 122, 0.35);
-    color: #fff;
+    background: rgba(30, 79, 216, 0.16);
+    color: #0b1b3b;
   }
 
-  /* Subtle custom scrollbar */
+  /* Subtle light scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #070c1b;
+    background: #eef2f8;
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(#1e4fd8, #0fb87a);
     border-radius: 999px;
-    border: 2px solid #070c1b;
+    border: 2px solid #eef2f8;
   }
 }
 
 @layer components {
-  /* Frosted glass surface */
-  .glass {
-    @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-glass;
-  }
-
-  .glass-soft {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md;
-  }
-
-  /* Gradient text */
-  .text-gradient {
-    @apply bg-brand-gradient-soft bg-clip-text text-transparent;
-  }
-
-  /* Section container */
+  /* -------- Section container -------- */
   .container-px {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  /* Eyebrow label */
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cloud-200;
+  /* -------- Primary light card -------- */
+  .card {
+    @apply relative rounded-3xl border border-line bg-white shadow-card transition-all duration-500;
+  }
+  .card-interactive {
+    @apply hover:-translate-y-1.5 hover:border-prestige-blue/30 hover:shadow-card-hover;
   }
 
-  /* Gradient border card (premium frame) */
+  /* Gradient-framed light card (premium emphasis) */
   .frame-gradient {
     position: relative;
     border-radius: 1.5rem;
     background:
-      linear-gradient(#0a1124, #0a1124) padding-box,
-      linear-gradient(135deg, rgba(30, 79, 216, 0.7), rgba(15, 184, 122, 0.5)) border-box;
-    border: 1px solid transparent;
+      linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(135deg, rgba(30, 79, 216, 0.55), rgba(15, 184, 122, 0.5)) border-box;
+    border: 1.5px solid transparent;
+    box-shadow: 0 10px 30px -18px rgba(11, 27, 59, 0.2);
   }
 
-  /* Animated hairline divider */
+  /* Frosted surfaces (used by the white navbar) */
+  .glass {
+    @apply relative rounded-3xl border border-line bg-white/85 backdrop-blur-xl shadow-soft;
+  }
+  .glass-soft {
+    @apply rounded-2xl border border-line bg-white/70 backdrop-blur-md;
+  }
+
+  /* -------- Dark (navy) surfaces for selective impact sections -------- */
+  .surface-dark {
+    @apply bg-navy-900 text-cloud-100;
+  }
+  .card-on-dark {
+    @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-md;
+  }
+
+  /* -------- Eyebrow label (light) -------- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-prestige-blue/15 bg-sky px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-prestige-blue;
+  }
+  .eyebrow-on-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cloud-200;
+  }
+
+  /* -------- Gradient text (use sparingly, for emphasis) -------- */
+  .text-gradient {
+    @apply bg-gradient-to-r from-prestige-blue to-prestige-green bg-clip-text text-transparent;
+  }
+
+  /* Hairline divider */
   .hairline {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    background: linear-gradient(90deg, transparent, rgba(11, 27, 59, 0.12), transparent);
+  }
+  .hairline-on-dark {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
   }
 
-  /* Noise overlay helper */
+  /* Noise overlay helper (kept very subtle for texture) */
   .noise::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Placeholder image frame (for real photography drop-in) */
+  .photo-frame {
+    @apply relative overflow-hidden rounded-2xl border border-line bg-mist;
   }
 }
 

@@ -13,6 +13,7 @@ import Industries from './pages/Industries.jsx'
 import Resources from './pages/Resources.jsx'
 import Contact from './pages/Contact.jsx'
 import BookConsultation from './pages/BookConsultation.jsx'
+import RequestProposal from './pages/RequestProposal.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-consultation" element={<BookConsultation />} />
+            <Route path="/request-proposal" element={<RequestProposal />} />
           </Routes>
         </AnimatePresence>
       </main>

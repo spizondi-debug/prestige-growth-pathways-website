@@ -26,27 +26,27 @@ export default function TrainingSolutions() {
         intro="Every Prestige programme is delivered through the platform, so learning is assessed, applied in the workplace and tied back to outcomes."
       >
         <Button to="/book-consultation" size="lg" icon="CalendarCheck">Book a Consultation</Button>
-        <Button to="/industries" variant="ghost" size="lg" icon="ArrowRight">By industry</Button>
+        <Button to="/industries" variant="secondary" size="lg" icon="ArrowRight">By industry</Button>
       </PageHero>
 
       {/* Programme categories */}
-      <section className="py-12">
+      <section className="bg-paper py-16">
         <div className="container-px space-y-6">
           {trainingHighlights.map((t, i) => (
             <Reveal key={t.id} delay={(i % 2) * 0.06}>
-              <div className="group grid gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-md transition-colors hover:border-white/20 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-9">
+              <div className="card grid gap-6 p-7 hover:border-prestige-blue/30 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-9">
                 <div className="flex items-start gap-5">
                   <IconTile name={t.icon} accent={t.accent} size="lg" />
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{t.title}</h3>
-                    <p className="mt-2 max-w-md text-cloud-200/70">{t.body}</p>
+                    <h3 className="text-2xl font-bold text-heading">{t.title}</h3>
+                    <p className="mt-2 max-w-md text-body">{t.body}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {programmeDetail[t.id].map((d) => (
-                    <div key={d} className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.02] px-3.5 py-3">
-                      <Check className="h-4 w-4 shrink-0 text-prestige-green-bright" />
-                      <span className="text-sm text-cloud-100">{d}</span>
+                    <div key={d} className="flex items-center gap-2.5 rounded-xl border border-line bg-mist px-3.5 py-3">
+                      <Check className="h-4 w-4 shrink-0 text-prestige-green-deep" />
+                      <span className="text-sm text-heading">{d}</span>
                     </div>
                   ))}
                 </div>
@@ -57,7 +57,7 @@ export default function TrainingSolutions() {
       </section>
 
       {/* Delivery formats */}
-      <section className="py-16">
+      <section className="bg-mist py-16">
         <div className="container-px">
           <SectionHeading
             eyebrow="How we deliver"
@@ -68,10 +68,10 @@ export default function TrainingSolutions() {
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {deliveryFormats.map((f, i) => (
               <Reveal key={f.title} delay={(i % 4) * 0.07}>
-                <div className="h-full rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+                <div className="card card-interactive h-full p-6">
                   <IconTile name={f.icon} accent={i % 2 ? 'green' : 'blue'} />
-                  <h3 className="mt-5 text-lg font-semibold text-white">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-cloud-200/70">{f.body}</p>
+                  <h3 className="mt-5 text-lg font-semibold text-heading">{f.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-body">{f.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -80,7 +80,7 @@ export default function TrainingSolutions() {
       </section>
 
       {/* Outcomes band */}
-      <section className="py-12">
+      <section className="bg-paper py-16">
         <div className="container-px">
           <div className="frame-gradient noise p-8 sm:p-12">
             <div className="grid gap-8 lg:grid-cols-3">
@@ -91,11 +91,11 @@ export default function TrainingSolutions() {
               ].map((o, i) => (
                 <Reveal key={o.t} delay={i * 0.08}>
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-prestige-green-bright">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-prestige-green-deep">
                       Outcome 0{i + 1}
                     </span>
-                    <h3 className="mt-2 text-xl font-bold text-white">{o.t}</h3>
-                    <p className="mt-2 text-sm text-cloud-200/70">{o.d}</p>
+                    <h3 className="mt-2 text-xl font-bold text-heading">{o.t}</h3>
+                    <p className="mt-2 text-sm text-body">{o.d}</p>
                   </div>
                 </Reveal>
               ))}

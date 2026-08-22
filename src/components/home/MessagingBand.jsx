@@ -1,6 +1,5 @@
 import Reveal from '../ui/Reveal.jsx'
 import IconTile from '../shared/IconTile.jsx'
-import { ClipboardCheck, Wrench, LineChart } from 'lucide-react'
 
 const pillars = [
   {
@@ -25,38 +24,36 @@ const pillars = [
 
 export default function MessagingBand() {
   return (
-    <section className="relative py-24">
+    <section className="relative bg-mist py-24">
       <div className="container-px">
-        <div className="frame-gradient noise relative overflow-hidden p-8 sm:p-12 lg:p-16">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <Reveal>
-              <span className="eyebrow mb-6">
-                <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
-                Why it works
-              </span>
-              <h2 className="text-display-md font-bold text-white">
-                Intelligence is nothing without{' '}
-                <span className="text-gradient">accountability and application</span>
-              </h2>
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-cloud-200/75">
-                Most platforms stop at content. Prestige Growth Pathways is engineered around the
-                three things that actually move performance.
-              </p>
-            </Reveal>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <span className="eyebrow mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
+              Why it works
+            </span>
+            <h2 className="text-display-md font-bold text-heading">
+              Intelligence is nothing without{' '}
+              <span className="text-gradient">accountability and application</span>
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+              Most platforms stop at content. Prestige Growth Pathways is engineered around the
+              three things that actually move performance.
+            </p>
+          </Reveal>
 
-            <div className="space-y-4">
-              {pillars.map((p, i) => (
-                <Reveal key={p.title} delay={i * 0.08}>
-                  <div className="flex gap-5 rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition-colors hover:bg-white/[0.05]">
-                    <IconTile name={p.icon} accent={p.accent} size="lg" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">{p.title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-cloud-200/70">{p.body}</p>
-                    </div>
+          <div className="space-y-4">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08}>
+                <div className="card flex gap-5 p-5 transition-colors hover:border-prestige-blue/30">
+                  <IconTile name={p.icon} accent={p.accent} size="lg" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-heading">{p.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-body">{p.body}</p>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

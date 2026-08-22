@@ -2,8 +2,8 @@ import Reveal from '../ui/Reveal.jsx'
 import Aurora from '../shared/Aurora.jsx'
 
 /**
- * PageHero — standard interior page header with eyebrow, title and intro.
- * Keeps every secondary page visually consistent with the brand.
+ * PageHero — standard interior page header (light theme) with eyebrow,
+ * title and intro. Sits on a white → very pale blue background.
  */
 export default function PageHero({ eyebrow, title, highlight, intro, variant = 'blue', children }) {
   const renderTitle = () => {
@@ -21,8 +21,8 @@ export default function PageHero({ eyebrow, title, highlight, intro, variant = '
   }
 
   return (
-    <section className="relative overflow-hidden pb-16 pt-36 sm:pt-44">
-      <Aurora variant={variant} />
+    <section className="relative overflow-hidden bg-mesh-light pb-16 pt-36 sm:pt-44">
+      <Aurora variant={variant} tone="light" />
       <div className="container-px">
         <div className="mx-auto max-w-3xl text-center">
           {eyebrow && (
@@ -34,11 +34,11 @@ export default function PageHero({ eyebrow, title, highlight, intro, variant = '
             </Reveal>
           )}
           <Reveal delay={0.05}>
-            <h1 className="text-display-lg font-bold text-balance text-white">{renderTitle()}</h1>
+            <h1 className="text-display-lg font-bold text-balance text-heading">{renderTitle()}</h1>
           </Reveal>
           {intro && (
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud-200/80 text-balance">
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-balance text-body">
                 {intro}
               </p>
             </Reveal>

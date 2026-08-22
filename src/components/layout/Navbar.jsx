@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Phone, MapPin } from 'lucide-react'
 import Logo from '../shared/Logo.jsx'
 import Button from '../ui/Button.jsx'
-import { nav, primaryCta } from '../../data/site.js'
+import { nav, primaryCta, contact } from '../../data/site.js'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -12,7 +12,7 @@ export default function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 12)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -26,15 +26,15 @@ export default function Navbar() {
   }, [open])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 pt-3">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        scrolled || open
+          ? 'border-line bg-white/90 shadow-soft backdrop-blur-xl'
+          : 'border-transparent bg-white/70 backdrop-blur-md'
+      }`}
+    >
       <div className="container-px">
-        <nav
-          className={`flex items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-all duration-500 sm:px-6 ${
-            scrolled
-              ? 'border-white/10 bg-ink-800/70 shadow-lift backdrop-blur-xl'
-              : 'border-transparent bg-transparent'
-          }`}
-        >
+        <nav className="flex items-center justify-between gap-4 py-3.5">
           <Logo />
 
           {/* Desktop nav */}
@@ -43,9 +43,10 @@ export default function Navbar() {
               <li key={item.to}>
                 <NavLink
                   to={item.to}
+                  end={item.to === '/'}
                   className={({ isActive }) =>
                     `relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-cloud-200/70 hover:text-white'
+                      isActive ? 'text-prestige-blue' : 'text-body hover:text-heading'
                     }`
                   }
                 >
@@ -55,7 +56,7 @@ export default function Navbar() {
                       {isActive && (
                         <motion.span
                           layoutId="nav-pill"
-                          className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-white/[0.06]"
+                          className="absolute inset-0 -z-10 rounded-full bg-sky"
                           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -75,7 +76,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-heading lg:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
           >
@@ -88,21 +89,22 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="container-px lg:hidden"
+            className="overflow-hidden border-t border-line bg-white lg:hidden"
           >
-            <div className="mt-3 glass p-4">
+            <div className="container-px py-4">
               <ul className="flex flex-col">
                 {nav.map((item) => (
                   <li key={item.to}>
                     <NavLink
                       to={item.to}
+                      end={item.to === '/'}
                       className={({ isActive }) =>
                         `block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
-                          isActive ? 'bg-white/[0.06] text-white' : 'text-cloud-200/80 hover:bg-white/[0.04] hover:text-white'
+                          isActive ? 'bg-sky text-prestige-blue' : 'text-body hover:bg-mist hover:text-heading'
                         }`
                       }
                     >
@@ -115,6 +117,18 @@ export default function Navbar() {
                 <Button to={primaryCta.to} className="w-full" icon="CalendarCheck">
                   {primaryCta.label}
                 </Button>
+              </div>
+
+              {/* Small contact area at the bottom of the mobile menu */}
+              <div className="mt-4 space-y-2 border-t border-line pt-4">
+                <a href={contact.phoneHref} className="flex items-center gap-3 text-sm font-semibold text-heading">
+                  <Phone className="h-4 w-4 text-prestige-green-deep" />
+                  {contact.phoneDisplay}
+                </a>
+                <p className="flex items-center gap-3 text-sm text-body">
+                  <MapPin className="h-4 w-4 text-prestige-blue" />
+                  {contact.addressLine1}, {contact.suburb}, {contact.city}
+                </p>
               </div>
             </div>
           </motion.div>

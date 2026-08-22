@@ -6,7 +6,7 @@ import { modules } from '../../data/modules.js'
 
 export default function PlatformGrid() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section className="relative bg-paper py-24 sm:py-28">
       <div className="container-px">
         <SectionHeading
           eyebrow="One Intelligent Platform"
@@ -23,21 +23,13 @@ export default function PlatformGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:border-white/20 hover:bg-white/[0.05]"
+              className="card card-interactive group p-6"
             >
-              {/* hover glow */}
-              <span
-                className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-2xl transition-opacity duration-500 ${
-                  m.accent === 'green' ? 'bg-prestige-green/20' : 'bg-prestige-blue/25'
-                } opacity-0 group-hover:opacity-100`}
-              />
-              <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-glass-edge" />
-
               <IconTile name={m.icon} accent={m.accent} />
-              <h3 className="mt-5 text-lg font-semibold text-white">{m.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-cloud-200/70">{m.blurb}</p>
+              <h3 className="mt-5 text-lg font-semibold text-heading">{m.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-body">{m.blurb}</p>
 
-              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-cloud-200/50 transition-colors group-hover:text-prestige-green-bright">
+              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-muted transition-colors group-hover:text-prestige-blue">
                 Learn more
                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
@@ -53,12 +45,12 @@ export default function PlatformGrid() {
             className="frame-gradient flex flex-col justify-between p-6"
           >
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-prestige-green-bright">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-prestige-green-deep">
                 The full picture
               </p>
-              <h3 className="mt-3 text-xl font-bold text-white">See how the modules work together</h3>
+              <h3 className="mt-3 text-xl font-bold text-heading">See how the modules work together</h3>
             </div>
-            <Button to="/platform" variant="ghost" size="sm" icon="ArrowRight" className="mt-6 self-start">
+            <Button to="/platform" variant="secondary" size="sm" icon="ArrowRight" className="mt-6 self-start">
               Tour the platform
             </Button>
           </motion.div>

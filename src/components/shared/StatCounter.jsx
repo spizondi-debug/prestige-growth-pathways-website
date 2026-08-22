@@ -3,13 +3,14 @@ import { useInView } from 'framer-motion'
 
 /**
  * StatCounter — animates a numeric value into view. Handles values like
- * "94%", "3.2x", "40+", "12k+" by animating the leading number and
- * re-attaching the suffix/prefix.
+ * "94%", "3.2x", "40+", "12k+".
+ * tone: 'light' (default) | 'dark' (for navy stat bands)
  */
-export default function StatCounter({ value, label }) {
+export default function StatCounter({ value, label, tone = 'light' }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const [display, setDisplay] = useState('0')
+  const onDark = tone === 'dark'
 
   const match = String(value).match(/^([^\d]*)([\d.]+)(.*)$/)
   const prefix = match ? match[1] : ''
@@ -35,10 +36,10 @@ export default function StatCounter({ value, label }) {
 
   return (
     <div ref={ref} className="text-center sm:text-left">
-      <div className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+      <div className="text-4xl font-bold tracking-tight sm:text-5xl">
         <span className="text-gradient">{display}</span>
       </div>
-      <p className="mt-2 text-sm leading-snug text-cloud-200/70">{label}</p>
+      <p className={`mt-2 text-sm leading-snug ${onDark ? 'text-cloud-200/70' : 'text-body'}`}>{label}</p>
     </div>
   )
 }

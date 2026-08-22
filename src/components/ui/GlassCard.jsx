@@ -1,29 +1,17 @@
 /**
- * GlassCard — frosted glass surface with optional gradient frame and
- * an interactive lift/glow on hover.
+ * GlassCard — primary light card surface with optional gradient frame
+ * and an interactive lift on hover.
  */
 export default function GlassCard({
   children,
   className = '',
   framed = false,
   interactive = true,
-  glow = 'blue',
+  glow, // retained for API compatibility (no neon glow in light theme)
 }) {
-  const glowMap = {
-    blue: 'hover:shadow-glow-blue',
-    green: 'hover:shadow-glow-green',
-    none: '',
-  }
-  const baseSurface = framed ? 'frame-gradient' : 'glass'
-  const interactivity = interactive
-    ? `transition-all duration-500 hover:-translate-y-1.5 ${glowMap[glow]}`
-    : ''
-
+  const baseSurface = framed ? 'frame-gradient' : 'card'
+  const interactivity = interactive && !framed ? 'card-interactive' : ''
   return (
-    <div className={`${baseSurface} ${interactivity} ${className}`}>
-      {/* top glass highlight */}
-      <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-glass-edge" />
-      {children}
-    </div>
+    <div className={`${baseSurface} ${interactivity} ${className}`}>{children}</div>
   )
 }

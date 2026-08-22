@@ -6,7 +6,7 @@ import { credibility, stats } from '../../data/content.js'
 
 export default function Credibility() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section className="relative bg-sky py-24 sm:py-28">
       <div className="container-px">
         <SectionHeading
           eyebrow="A Credible Partner"
@@ -15,11 +15,11 @@ export default function Credibility() {
           intro="Prestige Growth Pathways is built by Prestige Tutelage — combining deep workforce-development expertise with enterprise-grade technology you can rely on."
         />
 
-        {/* stats band */}
+        {/* stats band — one selective navy accent for impact */}
         <Reveal>
-          <div className="mt-14 grid grid-cols-2 gap-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-md sm:p-10 lg:grid-cols-4">
+          <div className="surface-dark noise relative mt-14 grid grid-cols-2 gap-8 overflow-hidden rounded-3xl p-8 shadow-lift sm:p-10 lg:grid-cols-4">
             {stats.map((s) => (
-              <StatCounter key={s.label} value={s.value} label={s.label} />
+              <StatCounter key={s.label} value={s.value} label={s.label} tone="dark" />
             ))}
           </div>
         </Reveal>
@@ -28,10 +28,10 @@ export default function Credibility() {
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {credibility.map((c, i) => (
             <Reveal key={c.title} delay={(i % 4) * 0.07}>
-              <div className="h-full rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+              <div className="card card-interactive h-full p-6">
                 <IconTile name={c.icon} accent={i % 2 ? 'green' : 'blue'} />
-                <h3 className="mt-5 text-base font-semibold text-white">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-cloud-200/70">{c.body}</p>
+                <h3 className="mt-5 text-base font-semibold text-heading">{c.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">{c.body}</p>
               </div>
             </Reveal>
           ))}
@@ -40,14 +40,14 @@ export default function Credibility() {
         {/* partner logo placeholders */}
         <Reveal>
           <div className="mt-12">
-            <p className="text-center text-xs uppercase tracking-[0.24em] text-cloud-200/40">
+            <p className="text-center text-xs uppercase tracking-[0.24em] text-muted">
               Trusted by forward-thinking teams — placeholder logos
             </p>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex h-14 items-center justify-center rounded-xl border border-white/8 bg-white/[0.02] text-sm font-semibold tracking-wide text-cloud-200/35"
+                  className="flex h-14 items-center justify-center rounded-xl border border-line bg-white text-sm font-semibold tracking-wide text-muted"
                 >
                   LOGO {i + 1}
                 </div>
