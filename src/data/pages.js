@@ -124,10 +124,53 @@ export const values = [
 
 // ---- About: timeline ----
 export const timeline = [
-  { year: '2014', title: 'Prestige Tutelage founded', body: 'Built on a belief that development should be measurable, not ceremonial.' },
-  { year: '2019', title: 'Capability frameworks at scale', body: 'Partnered with enterprises to standardise how growth is assessed and tracked.' },
-  { year: '2023', title: 'Growth intelligence engine', body: 'Unified assessment, learning and analytics into a single intelligent system.' },
-  { year: '2026', title: 'Prestige Growth Pathways', body: 'The platform brings workforce growth intelligence to every manager and team.' },
+  {
+    year: '2022',
+    title: 'Prestige Tutelage is established',
+    paras: [
+      'Prestige Tutelage was created with a clear purpose: to make skills development practical, measurable and relevant to the realities of the South African workplace.',
+      'We began by building our training capability, industry relationships and understanding of employer skills-development needs.',
+    ],
+  },
+  {
+    year: '2023',
+    title: 'Our first clients and workplace programmes',
+    paras: [
+      'Prestige began delivering training programmes to its first clients and working directly with employers and learners.',
+      'Through these early partnerships, we gained first-hand insight into workplace challenges including learner progress, attendance, workplace readiness, assessment and the need for stronger links between training and business performance.',
+    ],
+  },
+  {
+    year: '2024',
+    title: 'Research, skills gaps and workforce needs',
+    paras: [
+      'As our client base grew, our role expanded beyond simply delivering training.',
+      'We began conducting deeper research into organisational skills gaps, workforce capability, employee development needs and the alignment between training programmes and business objectives.',
+    ],
+    shift: { from: 'Which course can we offer?', to: 'What capability does this organisation actually need?' },
+  },
+  {
+    year: '2025',
+    title: 'Accreditation growth and a new need emerges',
+    paras: [
+      'Prestige continued expanding its accredited training offering across occupational, management, technical and workplace-development programmes.',
+      'At the same time, working with employers highlighted a bigger challenge: organisations needed a better way to understand, manage and measure employee development across the entire skills journey.',
+      'Training records, assessments, skills gaps, learner progress, workplace evidence and development plans were often sitting in different places. We recognised the need for a more connected system.',
+    ],
+  },
+  {
+    year: '2026',
+    title: 'Prestige Growth Pathways',
+    paras: [
+      'That need led to the development of Prestige Growth Pathways, bringing training, skills-gap analysis, assessments, workforce intelligence and employee development into one connected approach.',
+      'Prestige is evolving from being only a training provider into a strategic workforce development partner, helping organisations answer three important questions.',
+    ],
+    questions: [
+      'Where are our people now?',
+      'Where do they need to grow?',
+      'What is the best pathway to get them there?',
+    ],
+  },
 ]
 
 // ---- Training Solutions: delivery formats ----

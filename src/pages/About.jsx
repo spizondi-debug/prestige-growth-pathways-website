@@ -92,27 +92,56 @@ export default function About() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Our story — timeline */}
       <section className="bg-paper py-20">
         <div className="container-px">
           <SectionHeading
             align="left"
             eyebrow="Our story"
-            title="From a belief to a platform"
-            highlight="a platform"
-            intro="A short history of how Prestige Tutelage built towards workforce growth intelligence."
+            title="From training provider to workforce growth intelligence"
+            highlight="workforce growth intelligence"
+            intro="Our journey has been shaped by what we learned from employers, learners and the workplace itself. Each stage taught us that sustainable skills development takes more than training. It takes insight, measurement and continuous development."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+          <ol className="mt-14 space-y-10">
             {timeline.map((t, i) => (
-              <Reveal key={t.year} delay={(i % 4) * 0.08}>
-                <div className="card h-full p-6">
-                  <span className="text-3xl font-extrabold text-gradient">{t.year}</span>
-                  <h3 className="mt-3 text-base font-semibold text-heading">{t.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{t.body}</p>
-                </div>
+              <Reveal key={t.year} delay={(i % 3) * 0.06}>
+                <li className="grid gap-4 border-t border-line pt-8 sm:grid-cols-[8rem_1fr] sm:gap-8">
+                  <div className="text-4xl font-extrabold leading-none text-gradient">{t.year}</div>
+                  <div>
+                    <h3 className="text-xl font-bold text-heading">{t.title}</h3>
+                    <div className="mt-3 space-y-3 leading-relaxed text-body">
+                      {t.paras.map((p) => (
+                        <p key={p}>{p}</p>
+                      ))}
+                    </div>
+
+                    {t.shift && (
+                      <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+                        <span className="rounded-xl border border-line bg-mist px-4 py-2 text-sm text-muted line-through decoration-muted/50">
+                          “{t.shift.from}”
+                        </span>
+                        <span className="text-prestige-blue" aria-hidden="true">→</span>
+                        <span className="rounded-xl border border-prestige-blue/20 bg-sky px-4 py-2 text-sm font-semibold text-heading">
+                          “{t.shift.to}”
+                        </span>
+                      </div>
+                    )}
+
+                    {t.questions && (
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        {t.questions.map((q) => (
+                          <p key={q} className="rounded-xl border border-line bg-mist px-4 py-3 text-sm font-semibold text-heading">
+                            {q}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </li>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -121,9 +150,9 @@ export default function About() {
         <div className="container-px">
           <SectionHeading
             eyebrow="Partnership, not just software"
-            title="The people behind the platform"
-            highlight="behind the platform"
-            intro="Prestige Growth Pathways is backed by a team that makes sure the platform delivers real, adopted impact."
+            title="Technology, training and human support together"
+            highlight="human support"
+            intro="Prestige Growth Pathways combines technology with the training, accreditation, assessment and human support organisations need to turn workforce development into measurable business growth."
           />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {partners.map((p, i) => (
