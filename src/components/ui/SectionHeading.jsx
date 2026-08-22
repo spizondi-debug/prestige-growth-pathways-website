@@ -23,7 +23,7 @@ export default function SectionHeading({
       return (
         <>
           {before}
-          <span className="text-gradient">{highlight}</span>
+          <span className="text-prestige-blue">{highlight}</span>
           {after}
         </>
       )

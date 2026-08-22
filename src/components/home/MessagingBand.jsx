@@ -34,7 +34,7 @@ export default function MessagingBand() {
             </span>
             <h2 className="text-display-md font-bold text-heading">
               Intelligence is nothing without{' '}
-              <span className="text-gradient">accountability and application</span>
+              <span className="text-prestige-blue">accountability and application</span>
             </h2>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
               Most platforms stop at content. Prestige Growth Pathways is engineered around the

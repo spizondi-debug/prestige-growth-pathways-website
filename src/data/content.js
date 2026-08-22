@@ -31,14 +31,6 @@ export const heroSlides = [
   },
 ]
 
-// ---- Trust / credibility stats ----
-export const stats = [
-  { value: '94%', label: 'of development plans actively progressed' },
-  { value: '3.2x', label: 'average return on learning investment' },
-  { value: '40+', label: 'enterprise capability frameworks supported' },
-  { value: '12k+', label: 'employee growth journeys orchestrated' },
-]
-
 // ---- How it works ----
 export const howItWorks = [
   {

@@ -42,7 +42,7 @@ export default function BookConsultation() {
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="text-display-lg font-extrabold text-balance text-heading">
-                See your workforce growth, <span className="text-gradient">made measurable</span>
+                See your workforce growth, <span className="text-prestige-blue">made measurable</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>

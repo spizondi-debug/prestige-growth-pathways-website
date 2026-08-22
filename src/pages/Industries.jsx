@@ -55,7 +55,7 @@ export default function Industries() {
                   Don’t see your industry?
                 </span>
                 <h2 className="text-display-md font-bold text-heading">
-                  The platform flexes to <span className="text-gradient">your frameworks</span>
+                  The platform flexes to <span className="text-prestige-blue">your frameworks</span>
                 </h2>
                 <p className="mt-4 text-body">
                   Prestige Growth Pathways supports custom capability frameworks, role libraries and

@@ -18,7 +18,7 @@ export default function ClosingCTA() {
           <Reveal delay={0.05}>
             <h2 className="mx-auto max-w-3xl text-display-lg font-extrabold text-balance text-white">
               Build a workforce that grows on purpose — and{' '}
-              <span className="text-gradient">proves it</span>
+              <span className="text-prestige-blue">proves it</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

@@ -37,7 +37,7 @@ export default function HowItWorks() {
                 </div>
 
                 <div className="card mt-6 p-6 text-center">
-                  <span className="text-sm font-bold tracking-widest text-gradient">{s.step}</span>
+                  <span className="text-sm font-bold tracking-widest text-prestige-blue">{s.step}</span>
                   <h3 className="mt-2 text-lg font-semibold text-heading">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-body">{s.body}</p>
                 </div>

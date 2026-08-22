@@ -32,12 +32,10 @@ export default function HeroVisual({ accent = 'blue' }) {
           {/* header */}
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-cloud-200/50">Growth Intelligence</p>
-              <p className="mt-1 text-lg font-semibold text-white">Capability Index</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-cloud-200/50">Prestige Growth Pathways</p>
+              <p className="mt-1 text-lg font-semibold text-white">Team development</p>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full border border-prestige-green/30 bg-prestige-green/10 px-3 py-1 text-xs font-semibold text-prestige-green-bright">
-              <TrendingUp className="h-3.5 w-3.5" /> +18%
-            </span>
+            <TrendingUp className="h-5 w-5 text-prestige-green-bright" />
           </div>
 
           {/* chart */}
@@ -54,17 +52,16 @@ export default function HeroVisual({ accent = 'blue' }) {
             ))}
           </div>
 
-          {/* mini stats */}
+          {/* mini tiles (illustrative) */}
           <div className="mt-5 grid grid-cols-3 gap-3">
             {[
-              { Icon: Gauge, label: 'Assessed', value: '1,284' },
-              { Icon: Target, label: 'On plan', value: '94%' },
-              { Icon: Users, label: 'Coaching', value: '312' },
-            ].map(({ Icon, label, value }) => (
+              { Icon: Gauge, label: 'Assessments' },
+              { Icon: Target, label: 'Development' },
+              { Icon: Users, label: 'Coaching' },
+            ].map(({ Icon, label }) => (
               <div key={label} className="rounded-xl border border-white/10 bg-white/[0.05] p-3">
                 <Icon className="h-4 w-4 text-prestige-blue-soft" />
-                <p className="mt-2 text-base font-bold text-white">{value}</p>
-                <p className="text-[0.68rem] text-cloud-200/55">{label}</p>
+                <p className="mt-2 text-xs font-medium text-white">{label}</p>
               </div>
             ))}
           </div>
@@ -77,8 +74,8 @@ export default function HeroVisual({ accent = 'blue' }) {
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <p className="text-xs font-semibold text-heading">ROI Engine</p>
-        <p className="text-[0.68rem] font-medium text-prestige-green-deep">3.2x return</p>
+        <p className="text-xs font-semibold text-heading">Reporting</p>
+        <p className="text-[0.68rem] font-medium text-prestige-green-deep">Return on training</p>
       </motion.div>
 
       <motion.div
@@ -86,8 +83,8 @@ export default function HeroVisual({ accent = 'blue' }) {
         animate={{ y: [0, 14, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
       >
-        <p className="text-xs font-semibold text-heading">Risk Engine</p>
-        <p className="text-[0.68rem] font-medium text-prestige-blue">3 signals flagged</p>
+        <p className="text-xs font-semibold text-heading">Capability</p>
+        <p className="text-[0.68rem] font-medium text-prestige-blue">Skills and gaps</p>
       </motion.div>
     </div>
   )

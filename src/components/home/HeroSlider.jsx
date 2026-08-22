@@ -79,7 +79,7 @@ export default function HeroSlider() {
                 {slide.title.map((line, li) => (
                   <span key={li} className="block text-balance">
                     {line === slide.highlight || line.includes(slide.highlight) ? (
-                      <span className="text-gradient">{line}</span>
+                      <span className="text-prestige-blue">{line}</span>
                     ) : (
                       line
                     )}

@@ -12,7 +12,7 @@ export default function PageHero({ eyebrow, title, highlight, intro, variant = '
       return (
         <>
           {before}
-          <span className="text-gradient">{highlight}</span>
+          <span className="text-prestige-blue">{highlight}</span>
           {after}
         </>
       )

@@ -3,11 +3,9 @@ import PageHero from '../components/layout/PageHero.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import IconTile from '../components/shared/IconTile.jsx'
-import StatCounter from '../components/shared/StatCounter.jsx'
 import ClosingCTA from '../components/home/ClosingCTA.jsx'
 import Button from '../components/ui/Button.jsx'
 import { values, timeline } from '../data/pages.js'
-import { stats } from '../data/content.js'
 import { site } from '../data/site.js'
 
 const partners = [
@@ -23,7 +21,7 @@ export default function About() {
         eyebrow="About Prestige"
         title="We exist to make workforce growth measurable"
         highlight="measurable"
-        intro={`${site.name} is the platform expression of ${site.parent}’s belief that development should change behaviour, performance and outcomes — not just tick a box.`}
+        intro={`${site.name} is built by ${site.parent} on a simple belief: good development should improve behaviour, performance and business outcomes.`}
       >
         <Button to="/book-consultation" size="lg" icon="CalendarCheck">Book a Consultation</Button>
         <Button to="/platform" variant="secondary" size="lg" icon="ArrowRight">Explore the Platform</Button>
@@ -37,9 +35,8 @@ export default function About() {
               <IconTile name="Compass" accent="blue" size="lg" />
               <h2 className="mt-5 text-2xl font-bold text-heading">Our mission</h2>
               <p className="mt-4 leading-relaxed text-body">
-                To give every organisation a single, intelligent system for growing its people on
-                purpose — connecting assessment, development, application and analytics so growth
-                becomes a managed strategy, not a hopeful guess.
+                To help organisations develop their people with purpose, by connecting assessment,
+                development, workplace application and reporting in one practical approach.
               </p>
             </div>
           </Reveal>
@@ -48,9 +45,8 @@ export default function About() {
               <IconTile name="Sparkles" accent="green" size="lg" />
               <h2 className="mt-5 text-2xl font-bold text-heading">Our vision</h2>
               <p className="mt-4 leading-relaxed text-body">
-                A world where development is accountable and provable — where managers own growth,
-                employees see their pathway clearly, and leaders can finally measure the return on
-                their most important investment: people.
+                Workplaces where people keep developing, managers support that development, and the
+                results show up in how work gets done.
               </p>
             </div>
           </Reveal>
@@ -79,19 +75,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats — navy band on pale blue */}
-      <section className="bg-sky py-16">
-        <div className="container-px">
-          <Reveal>
-            <div className="surface-dark noise grid grid-cols-2 gap-8 overflow-hidden rounded-3xl p-8 shadow-lift sm:p-10 lg:grid-cols-4">
-              {stats.map((s) => (
-                <StatCounter key={s.label} value={s.value} label={s.label} tone="dark" />
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Our story — timeline */}
       <section className="bg-paper py-20">
         <div className="container-px">
@@ -107,7 +90,7 @@ export default function About() {
             {timeline.map((t, i) => (
               <Reveal key={t.year} delay={(i % 3) * 0.06}>
                 <li className="grid gap-4 border-t border-line pt-8 sm:grid-cols-[8rem_1fr] sm:gap-8">
-                  <div className="text-4xl font-extrabold leading-none text-gradient">{t.year}</div>
+                  <div className="text-4xl font-extrabold leading-none text-prestige-blue">{t.year}</div>
                   <div>
                     <h3 className="text-xl font-bold text-heading">{t.title}</h3>
                     <div className="mt-3 space-y-3 leading-relaxed text-body">

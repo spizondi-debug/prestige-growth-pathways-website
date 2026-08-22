@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <div className="max-w-xl">
                 <h3 className="text-display-md font-bold text-heading">
-                  Ready to make growth <span className="text-gradient">measurable?</span>
+                  Ready to make growth <span className="text-prestige-blue">measurable?</span>
                 </h3>
                 <p className="mt-3 text-body">
                   Book a consultation and see how Prestige Growth Pathways turns potential into performance.

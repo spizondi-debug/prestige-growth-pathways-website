@@ -94,15 +94,20 @@
     @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-md;
   }
 
-  /* -------- Eyebrow label (light) -------- */
+  /* -------- Section label (plain, no pill/dot) -------- */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-prestige-blue/15 bg-sky px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-prestige-blue;
+    @apply inline-flex items-center text-[0.8rem] font-semibold tracking-[0.02em] text-prestige-blue;
   }
   .eyebrow-on-dark {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cloud-200;
+    @apply inline-flex items-center text-[0.8rem] font-semibold tracking-[0.02em] text-prestige-blue-soft;
+  }
+  /* Hide the legacy decorative dot previously placed inside eyebrows */
+  .eyebrow > span,
+  .eyebrow-on-dark > span {
+    display: none;
   }
 
-  /* -------- Gradient text (use sparingly, for emphasis) -------- */
+  /* -------- Brand wordmark gradient — reserved for the Logo only -------- */
   .text-gradient {
     @apply bg-gradient-to-r from-prestige-blue to-prestige-green bg-clip-text text-transparent;
   }
