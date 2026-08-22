@@ -1,6 +1,6 @@
 // ============================================================
-// PLATFORM MODULES — the 11 capabilities of Prestige Growth Pathways
-// Icons reference lucide-react names (see IconTile component).
+// PLATFORM MODULES — the capabilities of Prestige Growth Pathways
+// Icons reference lucide-react names (see Icon registry).
 // ============================================================
 
 export const modules = [
@@ -9,87 +9,76 @@ export const modules = [
     name: 'Assessment Centre',
     icon: 'Gauge',
     accent: 'blue',
-    blurb:
-      'Diagnose capability, behaviour and potential with structured assessments that establish a clear growth baseline.',
+    blurb: 'Assess capability, behaviour and potential so every development plan starts from evidence.',
   },
   {
     id: 'development-plans',
     name: 'Development Plans',
     icon: 'Target',
     accent: 'green',
-    blurb:
-      'Personalised, role-aware development plans that connect every individual to the skills their future demands.',
+    blurb: 'Personal, role-aware development plans that connect each employee to the skills their work requires.',
   },
   {
     id: 'learning-pathways',
     name: 'Learning Pathways',
     icon: 'Route',
     accent: 'blue',
-    blurb:
-      'Adaptive pathways sequence the right learning at the right moment, guiding employees from novice to expert.',
+    blurb: 'Structured pathways that sequence the right learning at the right stage of a person’s growth.',
   },
   {
     id: 'micro-learning',
     name: 'Micro Learning',
     icon: 'Zap',
     accent: 'green',
-    blurb:
-      'Bite-sized, high-retention learning that fits the flow of work and keeps momentum between formal sessions.',
+    blurb: 'Short, practical learning that fits into the working day and keeps momentum between sessions.',
   },
   {
     id: 'workplace-application',
     name: 'Workplace Application',
     icon: 'Wrench',
     accent: 'blue',
-    blurb:
-      'Structured on-the-job application turns knowledge into demonstrated behaviour where it actually matters.',
+    blurb: 'On-the-job tasks that turn learning into demonstrated skill where the work actually happens.',
   },
   {
     id: 'coaching-hub',
     name: 'Coaching Hub',
     icon: 'MessagesSquare',
     accent: 'green',
-    blurb:
-      'A central space for coaching conversations, feedback loops and guided support across the growth journey.',
+    blurb: 'A shared space for coaching conversations, feedback and support across the development journey.',
   },
   {
     id: 'manager-reviews',
     name: 'Manager Reviews',
     icon: 'ClipboardCheck',
     accent: 'blue',
-    blurb:
-      'Built-in manager accountability — structured reviews that make leaders active owners of their teams’ growth.',
+    blurb: 'Structured reviews that make managers active owners of how their teams develop.',
   },
   {
     id: 'career-pathing',
     name: 'Career Pathing',
     icon: 'Milestone',
     accent: 'green',
-    blurb:
-      'Transparent career maps that show employees where they can go and exactly what it takes to get there.',
+    blurb: 'Clear career maps that show people where they can progress and what it takes to get there.',
   },
   {
     id: 'team-analytics',
     name: 'Team Analytics',
     icon: 'BarChart3',
     accent: 'blue',
-    blurb:
-      'Live capability analytics reveal strengths, gaps and progress across individuals, teams and the wider business.',
+    blurb: 'A live view of strengths, gaps and progress across individuals, teams and the wider business.',
   },
   {
-    id: 'roi-engine',
-    name: 'ROI Engine',
+    id: 'roi-reporting',
+    name: 'ROI & Reporting',
     icon: 'TrendingUp',
     accent: 'green',
-    blurb:
-      'Quantify the return on development by linking learning activity to performance, productivity and outcomes.',
+    blurb: 'Reporting that links development activity to performance so leaders can see the return.',
   },
   {
-    id: 'risk-engine',
-    name: 'Risk Engine',
+    id: 'capability-risk',
+    name: 'Capability Risk',
     icon: 'ShieldAlert',
     accent: 'blue',
-    blurb:
-      'Surface capability, compliance and flight-risk signals early so you can act before they cost the business.',
+    blurb: 'Early visibility of capability, compliance and retention risks so you can act in good time.',
   },
 ]

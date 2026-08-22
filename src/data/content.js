@@ -1,124 +1,114 @@
 // ============================================================
-// SHARED CONTENT — hero slides, stats, steps, solutions, etc.
-// All marketing copy is placeholder and safe to edit.
+// SHARED CONTENT — hero slides, process steps, training highlights.
+// Copy is written in a plain, professional South African register.
+// No fabricated statistics or placeholder proof.
 // ============================================================
 
-// ---- Home hero (3-slide experience) ----
+// ---- Home hero (three-slide experience) ----
 export const heroSlides = [
   {
     id: 1,
-    eyebrow: 'Workforce Growth Intelligence',
-    title: ['Turn workforce', 'potential into', 'measurable performance'],
-    highlight: 'measurable performance',
-    body: 'Prestige Growth Pathways unifies assessment, development and analytics into one intelligent system — so growth is no longer a guess, it’s a strategy.',
-    accent: 'blue',
+    label: 'Corporate training and workforce development',
+    title: 'Practical training that builds capable, accountable teams',
+    highlight: 'capable, accountable teams',
+    body: 'Prestige Tutelage helps South African organisations train their people and develop the skills their work depends on, supported by a platform that keeps development on track.',
   },
   {
     id: 2,
-    eyebrow: 'Personalised Development',
-    title: ['Development that', 'adapts to every', 'individual'],
-    highlight: 'every individual',
-    body: 'Role-aware pathways, micro learning and coaching meet each employee where they are and move them precisely where the business needs them.',
-    accent: 'green',
+    label: 'Skills development',
+    title: 'Development designed around each role and each person',
+    highlight: 'each person',
+    body: 'From learnerships to leadership programmes, we shape development around real roles, then help managers put it to work on the job.',
   },
   {
     id: 3,
-    eyebrow: 'Accountability & Outcomes',
-    title: ['Manager-owned', 'growth with proven', 'business return'],
-    highlight: 'proven business return',
-    body: 'Structured manager reviews and a built-in ROI engine connect learning to workplace application — and the outcomes leadership cares about.',
-    accent: 'blue',
+    label: 'Measured outcomes',
+    title: 'Learning that changes how work gets done',
+    highlight: 'how work gets done',
+    body: 'Assessment, coaching and clear reporting help you see progress and understand the value of your training.',
   },
 ]
 
-// ---- Trust / credibility stats ----
-export const stats = [
-  { value: '94%', label: 'of development plans actively progressed' },
-  { value: '3.2x', label: 'average return on learning investment' },
-  { value: '40+', label: 'enterprise capability frameworks supported' },
-  { value: '12k+', label: 'employee growth journeys orchestrated' },
-]
-
-// ---- How it works ----
+// ---- How it works (numbered process) ----
 export const howItWorks = [
   {
     step: '01',
-    title: 'Assess & Baseline',
-    body: 'Establish a clear, evidence-based picture of capability across people, teams and the organisation.',
+    title: 'Assess',
+    body: 'Understand current capability across people and teams through structured assessment.',
     icon: 'ScanLine',
   },
   {
     step: '02',
-    title: 'Personalise Pathways',
-    body: 'Translate insight into individual development plans and adaptive learning pathways aligned to strategy.',
+    title: 'Plan',
+    body: 'Build role-aware development plans and learning pathways aligned to your goals.',
     icon: 'Route',
   },
   {
     step: '03',
-    title: 'Apply at Work',
-    body: 'Drive workplace application and coaching, with managers accountable for real, observable progress.',
+    title: 'Apply',
+    body: 'Support workplace application and coaching, with managers accountable for progress.',
     icon: 'Wrench',
   },
   {
     step: '04',
-    title: 'Measure & Optimise',
-    body: 'Track outcomes, prove ROI and surface risk — then continuously refine the growth strategy.',
+    title: 'Review',
+    body: 'Track progress, review outcomes and refine the approach over time.',
     icon: 'LineChart',
   },
 ]
 
-// ---- Credibility / why Prestige ----
-export const credibility = [
-  {
-    title: 'Built by Prestige Tutelage',
-    body: 'Decades of workforce development expertise, distilled into an enterprise-grade growth platform.',
-    icon: 'Landmark',
-  },
-  {
-    title: 'Evidence over assumption',
-    body: 'Every recommendation is grounded in assessment data, behaviour and measurable workplace outcomes.',
-    icon: 'BadgeCheck',
-  },
-  {
-    title: 'Enterprise-ready & secure',
-    body: 'Designed for scale, governance and integration — trusted to sit at the centre of your people strategy.',
-    icon: 'ShieldCheck',
-  },
-  {
-    title: 'Partnership, not just software',
-    body: 'Strategists, facilitators and coaches stand behind the platform to ensure adoption and impact.',
-    icon: 'Handshake',
-  },
-]
-
-// ---- Training solution highlights (Home) ----
+// ---- Training solution highlights ----
 export const trainingHighlights = [
   {
     id: 'leadership',
-    title: 'Leadership & Management',
-    body: 'Equip managers to lead, coach and hold accountable — the multiplier behind every high-performing team.',
+    title: 'Leadership and management',
+    body: 'Equip managers and supervisors to lead, coach and hold their teams accountable.',
     icon: 'Crown',
     accent: 'blue',
   },
   {
     id: 'technical',
-    title: 'Technical & Functional Skills',
-    body: 'Close critical capability gaps with role-specific, application-driven technical development.',
+    title: 'Technical and functional skills',
+    body: 'Close role-specific skills gaps with practical, applied training for the work at hand.',
     icon: 'Cog',
     accent: 'green',
   },
   {
     id: 'behavioural',
-    title: 'Behavioural & Power Skills',
-    body: 'Build the communication, resilience and collaboration that turn good teams into exceptional ones.',
+    title: 'Behavioural and interpersonal skills',
+    body: 'Build the communication, teamwork and resilience that stronger teams rely on.',
     icon: 'Sparkles',
     accent: 'blue',
   },
   {
     id: 'compliance',
-    title: 'Compliance & Onboarding',
-    body: 'Accelerate time-to-competence and stay audit-ready with structured, trackable programmes.',
+    title: 'Compliance and onboarding',
+    body: 'Bring new employees up to speed and keep teams compliant and audit-ready.',
     icon: 'FileCheck2',
     accent: 'green',
+  },
+]
+
+// ---- Why organisations work with Prestige (qualitative, no invented metrics) ----
+export const strengths = [
+  {
+    title: 'An established training partner',
+    body: 'Prestige Tutelage brings real experience in corporate training and skills development in South Africa.',
+    icon: 'Landmark',
+  },
+  {
+    title: 'Grounded in evidence',
+    body: 'Assessment and workplace application keep development practical rather than theoretical.',
+    icon: 'BadgeCheck',
+  },
+  {
+    title: 'Managers stay involved',
+    body: 'Structured reviews make line managers active owners of how their teams develop.',
+    icon: 'UserCheck',
+  },
+  {
+    title: 'Training and technology together',
+    body: 'A supporting platform keeps development organised, visible and easy to manage.',
+    icon: 'Workflow',
   },
 ]

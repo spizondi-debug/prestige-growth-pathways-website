@@ -1,76 +1,94 @@
 import PageShell from '../components/layout/PageShell.jsx'
 import PageHero from '../components/layout/PageHero.jsx'
+import Seo from '../components/shared/Seo.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
-import IconTile from '../components/shared/IconTile.jsx'
-import StatCounter from '../components/shared/StatCounter.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import Figure from '../components/shared/Figure.jsx'
 import ClosingCTA from '../components/home/ClosingCTA.jsx'
 import Button from '../components/ui/Button.jsx'
-import { values, timeline } from '../data/pages.js'
-import { stats } from '../data/content.js'
-import { site } from '../data/site.js'
+import { values } from '../data/pages.js'
+import { images } from '../data/images.js'
 
-const partners = [
-  { title: 'Strategists', body: 'We help you translate business goals into a measurable capability strategy.', icon: 'Compass' },
-  { title: 'Facilitators', body: 'Expert-led programmes that engage people and drive real workplace application.', icon: 'Presentation' },
-  { title: 'Coaches', body: 'Ongoing coaching and support that embeds behaviour change beyond the classroom.', icon: 'MessagesSquare' },
+const approach = [
+  { title: 'Understand your needs', body: 'We start by understanding your roles, your goals and where the skills gaps are.', icon: 'Compass' },
+  { title: 'Design and deliver', body: 'We design practical training and development, then deliver it in ways that suit your teams.', icon: 'Presentation' },
+  { title: 'Support application', body: 'We help managers and learners apply new skills at work, and we track how it is going.', icon: 'Wrench' },
 ]
 
 export default function About() {
   return (
     <PageShell>
+      <Seo
+        title="About Prestige"
+        description="Prestige Tutelage is a South African corporate training and workforce-development partner focused on practical skills and workplace application."
+        path="/about"
+      />
       <PageHero
-        eyebrow="About Prestige"
-        title="We exist to make workforce growth measurable"
-        highlight="measurable"
-        intro={`${site.name} is the platform expression of ${site.parent}’s belief that development should change behaviour, performance and outcomes — not just tick a box.`}
+        label="About Prestige"
+        title="A South African training and workforce-development partner"
+        highlight="workforce-development partner"
+        intro="Prestige Tutelage helps organisations develop capable, confident and accountable teams, from frontline staff to management."
       >
-        <Button to="/book-consultation" size="lg" icon="CalendarCheck">Book a Consultation</Button>
-        <Button to="/platform" variant="secondary" size="lg" icon="ArrowRight">Explore the Platform</Button>
+        <Button to="/book-consultation" size="lg">Book a Consultation</Button>
+        <Button to="/platform" variant="secondary" size="lg">Explore the platform</Button>
       </PageHero>
 
-      {/* Mission / vision */}
-      <section className="bg-mist py-20">
-        <div className="container-px grid gap-6 lg:grid-cols-2">
+      {/* Story + image */}
+      <section className="bg-white py-20">
+        <div className="container-px grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <div className="card h-full p-8 sm:p-10">
-              <IconTile name="Compass" accent="blue" size="lg" />
-              <h2 className="mt-5 text-2xl font-bold text-heading">Our mission</h2>
-              <p className="mt-4 leading-relaxed text-body">
-                To give every organisation a single, intelligent system for growing its people on
-                purpose — connecting assessment, development, application and analytics so growth
-                becomes a managed strategy, not a hopeful guess.
+            <p className="section-label">Who we are</p>
+            <h2 className="text-display-md font-semibold text-heading">
+              Practical training, built for South African workplaces
+            </h2>
+            <div className="mt-4 space-y-4 text-lg leading-relaxed text-body">
+              <p>
+                Prestige Tutelage is a training and workforce-development business. We help
+                organisations build the skills their people and operations depend on, across sectors
+                and roles.
+              </p>
+              <p>
+                Prestige Growth Pathways is our platform. It keeps development organised and visible,
+                so training is easier to run and its value is easier to see.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="card h-full p-8 sm:p-10">
-              <IconTile name="Sparkles" accent="green" size="lg" />
-              <h2 className="mt-5 text-2xl font-bold text-heading">Our vision</h2>
-              <p className="mt-4 leading-relaxed text-body">
-                A world where development is accountable and provable — where managers own growth,
-                employees see their pathway clearly, and leaders can finally measure the return on
-                their most important investment: people.
-              </p>
-            </div>
+            <Figure img={images.aboutTraining} ratio="5 / 4" className="shadow-card" />
           </Reveal>
         </div>
       </section>
 
+      {/* Purpose / Vision / Mission */}
+      <section className="bg-mist py-20">
+        <div className="container-px grid gap-6 lg:grid-cols-3">
+          {[
+            { label: 'Purpose', title: 'Why we exist', body: 'To help South African organisations develop capable, confident and accountable teams.' },
+            { label: 'Vision', title: 'What we work towards', body: 'Workplaces where people keep growing, managers support that growth, and it shows in how work gets done.' },
+            { label: 'Mission', title: 'How we get there', body: 'Deliver practical training and skills development, supported by a platform that keeps it applied and visible.' },
+          ].map((c, i) => (
+            <Reveal key={c.label} delay={i * 0.06}>
+              <div className="card h-full p-7">
+                <p className="section-label">{c.label}</p>
+                <h3 className="text-xl font-semibold text-heading">{c.title}</h3>
+                <p className="mt-3 leading-relaxed text-body">{c.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Values */}
-      <section className="bg-paper py-20">
+      <section className="bg-white py-20">
         <div className="container-px">
-          <SectionHeading
-            eyebrow="What we believe"
-            title="The principles behind the platform"
-            highlight="behind the platform"
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeading label="What we believe" title="The principles behind our work" />
+          <div className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
-              <Reveal key={v.title} delay={(i % 4) * 0.07}>
-                <div className="card card-interactive h-full p-6">
-                  <IconTile name={v.icon} accent={i % 2 ? 'green' : 'blue'} />
-                  <h3 className="mt-5 text-lg font-semibold text-heading">{v.title}</h3>
+              <Reveal key={v.title} delay={(i % 4) * 0.06}>
+                <div className="border-t-2 border-line pt-5">
+                  <Icon name={v.icon} className="h-6 w-6 text-prestige-blue" strokeWidth={1.8} />
+                  <h3 className="mt-3 text-lg font-semibold text-heading">{v.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-body">{v.body}</p>
                 </div>
               </Reveal>
@@ -79,59 +97,17 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats — navy band on pale blue */}
-      <section className="bg-sky py-16">
-        <div className="container-px">
-          <Reveal>
-            <div className="surface-dark noise grid grid-cols-2 gap-8 overflow-hidden rounded-3xl p-8 shadow-lift sm:p-10 lg:grid-cols-4">
-              {stats.map((s) => (
-                <StatCounter key={s.label} value={s.value} label={s.label} tone="dark" />
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="bg-paper py-20">
-        <div className="container-px">
-          <SectionHeading
-            align="left"
-            eyebrow="Our story"
-            title="From a belief to a platform"
-            highlight="a platform"
-            intro="A short history of how Prestige Tutelage built towards workforce growth intelligence."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {timeline.map((t, i) => (
-              <Reveal key={t.year} delay={(i % 4) * 0.08}>
-                <div className="card h-full p-6">
-                  <span className="text-3xl font-extrabold text-gradient">{t.year}</span>
-                  <h3 className="mt-3 text-base font-semibold text-heading">{t.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{t.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How we partner (people behind the platform — no invented profiles) */}
+      {/* Operating approach */}
       <section className="bg-mist py-20">
         <div className="container-px">
-          <SectionHeading
-            eyebrow="Partnership, not just software"
-            title="The people behind the platform"
-            highlight="behind the platform"
-            intro="Prestige Growth Pathways is backed by a team that makes sure the platform delivers real, adopted impact."
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {partners.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.08}>
-                <div className="card card-interactive h-full p-7">
-                  <IconTile name={p.icon} accent={i % 2 ? 'green' : 'blue'} size="lg" />
-                  <h3 className="mt-5 text-lg font-semibold text-heading">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{p.body}</p>
+          <SectionHeading label="How we work" title="A straightforward way to partner with you" />
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {approach.map((a, i) => (
+              <Reveal key={a.title} delay={i * 0.06}>
+                <div className="card h-full p-7">
+                  <span className="text-sm font-semibold text-prestige-blue">0{i + 1}</span>
+                  <h3 className="mt-2 text-lg font-semibold text-heading">{a.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-body">{a.body}</p>
                 </div>
               </Reveal>
             ))}

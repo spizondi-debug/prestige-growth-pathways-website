@@ -1,21 +1,25 @@
 import Reveal from './Reveal.jsx'
 
 /**
- * SectionHeading — consistent eyebrow + title + intro block (light theme).
- * align: 'left' | 'center'
- * tone:  'light' (default, dark text) | 'dark' (for navy sections)
+ * SectionHeading — clean section label + heading.
+ * - label: optional short label (DM Sans, Prestige blue, normal case). Omit to render nothing.
+ * - highlight: optional single phrase rendered in solid Prestige blue (no gradient).
+ * - align: 'left' (default) | 'center'
+ * - tone: 'light' (default) | 'dark'
  */
 export default function SectionHeading({
-  eyebrow,
+  label,
+  eyebrow, // backwards-compatible alias for label
   title,
   highlight,
   intro,
-  align = 'center',
+  align = 'left',
   tone = 'light',
   className = '',
 }) {
-  const alignment = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
+  const sectionLabel = label ?? eyebrow
   const onDark = tone === 'dark'
+  const alignment = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
 
   const renderTitle = () => {
     if (highlight && typeof title === 'string' && title.includes(highlight)) {
@@ -23,7 +27,7 @@ export default function SectionHeading({
       return (
         <>
           {before}
-          <span className="text-gradient">{highlight}</span>
+          <span className="text-prestige-blue">{highlight}</span>
           {after}
         </>
       )
@@ -33,22 +37,19 @@ export default function SectionHeading({
 
   return (
     <div className={`flex flex-col ${alignment} max-w-3xl ${className}`}>
-      {eyebrow && (
+      {sectionLabel && (
         <Reveal>
-          <span className={`${onDark ? 'eyebrow-on-dark' : 'eyebrow'} mb-5`}>
-            <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
-            {eyebrow}
-          </span>
+          <p className={`section-label ${onDark ? '!text-prestige-blue-soft' : ''}`}>{sectionLabel}</p>
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <h2 className={`text-display-md font-bold text-balance ${onDark ? 'text-white' : 'text-heading'}`}>
+        <h2 className={`text-display-md font-semibold text-balance ${onDark ? 'text-white' : 'text-heading'}`}>
           {renderTitle()}
         </h2>
       </Reveal>
       {intro && (
         <Reveal delay={0.1}>
-          <p className={`mt-5 text-lg leading-relaxed text-balance ${onDark ? 'text-cloud-200/80' : 'text-body'}`}>
+          <p className={`mt-4 text-lg leading-relaxed ${onDark ? 'text-cloud-200' : 'text-body'}`}>
             {intro}
           </p>
         </Reveal>

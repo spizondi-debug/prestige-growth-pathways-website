@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Phone, MapPin } from 'lucide-react'
 import Logo from '../shared/Logo.jsx'
 import Button from '../ui/Button.jsx'
@@ -12,7 +12,7 @@ export default function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -27,48 +27,37 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled || open
-          ? 'border-line bg-white/90 shadow-soft backdrop-blur-xl'
-          : 'border-transparent bg-white/70 backdrop-blur-md'
+      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-white transition-shadow duration-200 ${
+        scrolled ? 'shadow-soft' : ''
       }`}
     >
       <div className="container-px">
-        <nav className="flex items-center justify-between gap-4 py-3.5">
+        <nav className="flex items-center justify-between gap-4 py-4">
           <Logo />
 
           {/* Desktop nav */}
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                      isActive ? 'text-prestige-blue' : 'text-body hover:text-heading'
+                    `border-b-2 pb-1 text-sm font-medium transition-colors duration-200 ${
+                      isActive
+                        ? 'border-prestige-blue text-heading'
+                        : 'border-transparent text-body hover:text-heading'
                     }`
                   }
                 >
-                  {({ isActive }) => (
-                    <>
-                      {item.label}
-                      {isActive && (
-                        <motion.span
-                          layoutId="nav-pill"
-                          className="absolute inset-0 -z-10 rounded-full bg-sky"
-                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                        />
-                      )}
-                    </>
-                  )}
+                  {item.label}
                 </NavLink>
               </li>
             ))}
           </ul>
 
           <div className="hidden lg:block">
-            <Button to={primaryCta.to} size="sm" icon="CalendarCheck">
+            <Button to={primaryCta.to} size="sm">
               {primaryCta.label}
             </Button>
           </div>
@@ -76,7 +65,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-heading lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line text-heading lg:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
           >
@@ -92,19 +81,19 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
             className="overflow-hidden border-t border-line bg-white lg:hidden"
           >
             <div className="container-px py-4">
-              <ul className="flex flex-col">
+              <ul className="flex flex-col divide-y divide-line">
                 {nav.map((item) => (
                   <li key={item.to}>
                     <NavLink
                       to={item.to}
                       end={item.to === '/'}
                       className={({ isActive }) =>
-                        `block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
-                          isActive ? 'bg-sky text-prestige-blue' : 'text-body hover:bg-mist hover:text-heading'
+                        `block py-3 text-base font-medium transition-colors ${
+                          isActive ? 'text-prestige-blue' : 'text-heading hover:text-prestige-blue'
                         }`
                       }
                     >
@@ -113,16 +102,16 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-3">
-                <Button to={primaryCta.to} className="w-full" icon="CalendarCheck">
+              <div className="mt-4">
+                <Button to={primaryCta.to} className="w-full">
                   {primaryCta.label}
                 </Button>
               </div>
 
-              {/* Small contact area at the bottom of the mobile menu */}
-              <div className="mt-4 space-y-2 border-t border-line pt-4">
-                <a href={contact.phoneHref} className="flex items-center gap-3 text-sm font-semibold text-heading">
-                  <Phone className="h-4 w-4 text-prestige-green-deep" />
+              {/* Contact area */}
+              <div className="mt-5 space-y-2 border-t border-line pt-4">
+                <a href={contact.phoneHref} className="flex items-center gap-3 text-sm font-medium text-heading">
+                  <Phone className="h-4 w-4 text-prestige-blue" />
                   {contact.phoneDisplay}
                 </a>
                 <p className="flex items-center gap-3 text-sm text-body">

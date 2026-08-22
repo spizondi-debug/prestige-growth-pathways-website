@@ -1,7 +1,7 @@
 import { motion, useScroll, useSpring } from 'framer-motion'
 
 /**
- * ScrollProgress — slim brand-gradient bar fixed to the top of the viewport.
+ * ScrollProgress — slim solid Prestige-blue progress bar at the top.
  */
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -9,7 +9,7 @@ export default function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-brand-gradient"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-prestige-blue"
       aria-hidden="true"
     />
   )

@@ -1,18 +1,27 @@
 import Reveal from '../ui/Reveal.jsx'
-import Aurora from '../shared/Aurora.jsx'
 
 /**
- * PageHero — standard interior page header (light theme) with eyebrow,
- * title and intro. Sits on a white → very pale blue background.
+ * PageHero — interior page header. Left-aligned and restrained by default.
  */
-export default function PageHero({ eyebrow, title, highlight, intro, variant = 'blue', children }) {
+export default function PageHero({
+  label,
+  eyebrow, // alias
+  title,
+  highlight,
+  intro,
+  align = 'left',
+  children,
+}) {
+  const sectionLabel = label ?? eyebrow
+  const centered = align === 'center'
+
   const renderTitle = () => {
     if (highlight && title.includes(highlight)) {
       const [before, after] = title.split(highlight)
       return (
         <>
           {before}
-          <span className="text-gradient">{highlight}</span>
+          <span className="text-prestige-blue">{highlight}</span>
           {after}
         </>
       )
@@ -21,31 +30,29 @@ export default function PageHero({ eyebrow, title, highlight, intro, variant = '
   }
 
   return (
-    <section className="relative overflow-hidden bg-mesh-light pb-16 pt-36 sm:pt-44">
-      <Aurora variant={variant} tone="light" />
+    <section className="border-b border-line bg-mist pb-14 pt-32 sm:pt-40">
       <div className="container-px">
-        <div className="mx-auto max-w-3xl text-center">
-          {eyebrow && (
+        <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''}`}>
+          {sectionLabel && (
             <Reveal>
-              <span className="eyebrow mb-6">
-                <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
-                {eyebrow}
-              </span>
+              <p className="section-label">{sectionLabel}</p>
             </Reveal>
           )}
           <Reveal delay={0.05}>
-            <h1 className="text-display-lg font-bold text-balance text-heading">{renderTitle()}</h1>
+            <h1 className="text-display-lg font-semibold text-balance text-heading">{renderTitle()}</h1>
           </Reveal>
           {intro && (
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-balance text-body">
+              <p className={`mt-5 text-lg leading-relaxed text-body ${centered ? 'mx-auto max-w-2xl' : 'max-w-2xl'}`}>
                 {intro}
               </p>
             </Reveal>
           )}
           {children && (
             <Reveal delay={0.15}>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">{children}</div>
+              <div className={`mt-8 flex flex-wrap items-center gap-4 ${centered ? 'justify-center' : ''}`}>
+                {children}
+              </div>
             </Reveal>
           )}
         </div>

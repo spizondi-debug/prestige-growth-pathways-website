@@ -1,18 +1,22 @@
 import PageShell from '../components/layout/PageShell.jsx'
 import PageHero from '../components/layout/PageHero.jsx'
+import Seo from '../components/shared/Seo.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import IconTile from '../components/shared/IconTile.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import Figure from '../components/shared/Figure.jsx'
 import Button from '../components/ui/Button.jsx'
+import HeroVisual from '../components/home/HeroVisual.jsx'
 import ClosingCTA from '../components/home/ClosingCTA.jsx'
 import { modules } from '../data/modules.js'
 import { howItWorks } from '../data/content.js'
-import Icon from '../components/ui/Icon.jsx'
+import { images } from '../data/images.js'
 
 const groups = [
-  { name: 'Understand', desc: 'See capability clearly.', ids: ['assessment-centre', 'team-analytics', 'risk-engine'] },
+  { name: 'Understand', desc: 'See where people and teams stand.', ids: ['assessment-centre', 'team-analytics', 'capability-risk'] },
   { name: 'Develop', desc: 'Grow the right skills.', ids: ['development-plans', 'learning-pathways', 'micro-learning', 'career-pathing'] },
-  { name: 'Apply & Prove', desc: 'Turn growth into outcomes.', ids: ['workplace-application', 'coaching-hub', 'manager-reviews', 'roi-engine'] },
+  { name: 'Apply and report', desc: 'Put learning to work and show progress.', ids: ['workplace-application', 'coaching-hub', 'manager-reviews', 'roi-reporting'] },
 ]
 
 export default function Platform() {
@@ -20,33 +24,59 @@ export default function Platform() {
 
   return (
     <PageShell>
+      <Seo
+        title="The Platform"
+        description="Prestige Growth Pathways supports assessment, development, workplace application and reporting for corporate training and workforce development."
+        path="/platform"
+      />
       <PageHero
-        eyebrow="The Platform"
-        title="Workforce growth intelligence, end to end"
-        highlight="growth intelligence"
-        intro="Eleven connected modules that move people from assessment to application to proven impact — all inside one intelligent system."
+        label="The platform"
+        title="Technology that supports real training and real teams"
+        highlight="real teams"
+        intro="Prestige Growth Pathways keeps development organised, from first assessment to workplace application and reporting."
       >
-        <Button to="/book-consultation" size="lg" icon="CalendarCheck">Book a Consultation</Button>
-        <Button to="/training-solutions" variant="secondary" size="lg" icon="ArrowRight">Training solutions</Button>
+        <Button to="/book-consultation" size="lg">Book a Consultation</Button>
+        <Button to="/training-solutions" variant="secondary" size="lg">Training solutions</Button>
       </PageHero>
 
-      {/* Intelligence flow */}
-      <section className="bg-mist py-16">
+      {/* Intro + interface */}
+      <section className="bg-white py-20">
+        <div className="container-px grid gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <p className="section-label">One place for development</p>
+            <h2 className="text-display-md font-semibold text-heading">
+              Built around your people
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-body">
+              The platform brings assessment, learning, coaching and reporting together. It gives
+              managers a clear view of development, without adding admin to the working day.
+            </p>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <HeroVisual />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Capability groups */}
+      <section className="bg-mist py-20">
         <div className="container-px">
-          <div className="grid gap-4 md:grid-cols-3">
+          <SectionHeading label="What it does" title="Capabilities that work together" />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {groups.map((g, gi) => (
-              <Reveal key={g.name} delay={gi * 0.08}>
-                <div className="frame-gradient h-full p-6">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-prestige-green-deep">
-                    Step {gi + 1}
-                  </span>
-                  <h3 className="mt-2 text-2xl font-bold text-heading">{g.name}</h3>
+              <Reveal key={g.name} delay={gi * 0.06}>
+                <div className="card h-full p-7">
+                  <span className="text-sm font-semibold text-prestige-blue">Step {gi + 1}</span>
+                  <h3 className="mt-1 text-xl font-semibold text-heading">{g.name}</h3>
                   <p className="mt-1 text-sm text-body">{g.desc}</p>
-                  <div className="mt-5 space-y-2">
+                  <div className="mt-5 space-y-4 border-t border-line pt-5">
                     {g.ids.map((id) => (
-                      <div key={id} className="flex items-center gap-3 rounded-xl border border-line bg-mist px-3 py-2.5">
+                      <div key={id} className="flex items-start gap-3">
                         <IconTile name={byId[id].icon} accent={byId[id].accent} size="sm" />
-                        <span className="text-sm font-medium text-heading">{byId[id].name}</span>
+                        <div>
+                          <p className="text-sm font-semibold text-heading">{byId[id].name}</p>
+                          <p className="mt-0.5 text-sm leading-relaxed text-body">{byId[id].blurb}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -57,58 +87,32 @@ export default function Platform() {
         </div>
       </section>
 
-      {/* Module deep-dive grid */}
-      <section className="bg-paper py-16">
-        <div className="container-px">
-          <SectionHeading
-            eyebrow="Every capability"
-            title="A closer look at the eleven modules"
-            highlight="eleven modules"
-            intro="Each module is powerful on its own — and far greater as part of the connected growth system."
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {modules.map((m, i) => (
-              <Reveal key={m.id} delay={(i % 3) * 0.06}>
-                <div className="card card-interactive group h-full p-6">
-                  <div className="flex items-center justify-between">
-                    <IconTile name={m.icon} accent={m.accent} size="lg" />
-                    <span className="text-xs font-semibold uppercase tracking-widest text-muted">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-heading">{m.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{m.blurb}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Loop recap — selective navy feature band */}
-      <section className="bg-paper pb-16">
-        <div className="container-px">
-          <div className="surface-dark noise overflow-hidden rounded-[2rem] p-8 shadow-lift sm:p-12">
-            <SectionHeading
-              align="left"
-              tone="dark"
-              eyebrow="The growth loop"
-              title="Insight in, outcomes out"
-              highlight="outcomes out"
-            />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Supports real people (image + copy) */}
+      <section className="bg-white py-20">
+        <div className="container-px grid gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <Figure img={images.platformWorkplace} ratio="5 / 4" className="shadow-card" />
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="section-label">Technology in service of training</p>
+            <h2 className="text-display-md font-semibold text-heading">
+              The platform supports the people doing the work
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-body">
+              Behind every dashboard is a real team learning on the job. Prestige Growth Pathways is
+              there to make that development easier to run, not to replace the human side of training.
+            </p>
+            <div className="mt-7 grid gap-y-3">
               {howItWorks.map((s) => (
-                <div key={s.step} className="flex gap-4">
-                  <Icon name={s.icon} className="h-7 w-7 shrink-0 text-prestige-green-bright" />
-                  <div>
-                    <p className="text-sm font-bold text-prestige-green-bright">{s.step}</p>
-                    <h4 className="text-base font-semibold text-white">{s.title}</h4>
-                    <p className="mt-1 text-sm text-cloud-200/70">{s.body}</p>
-                  </div>
+                <div key={s.step} className="flex items-start gap-3">
+                  <Icon name={s.icon} className="mt-0.5 h-5 w-5 shrink-0 text-prestige-blue" strokeWidth={1.8} />
+                  <p className="text-body">
+                    <span className="font-semibold text-heading">{s.title}.</span> {s.body}
+                  </p>
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

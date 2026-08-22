@@ -1,159 +1,151 @@
 // ============================================================
-// PAGE-SPECIFIC CONTENT — industries, resources, values, etc.
-// Placeholder copy — edit freely.
+// PAGE-SPECIFIC CONTENT — industries, insights, values, formats, FAQs.
+// Informational topics only. No invented reports, case studies,
+// testimonials or statistics.
 // ============================================================
 
-// ---- Industries ----
+// ---- Industries (aligned with the image manifest keys) ----
 export const industries = [
   {
-    id: 'financial',
-    name: 'Financial Services',
-    icon: 'Banknote',
-    blurb: 'Build risk-aware, compliant and high-performing teams in a fast-moving regulatory landscape.',
-    points: ['Regulatory competence tracking', 'Advisor capability uplift', 'Leadership pipelines'],
+    id: 'manufacturing',
+    name: 'Manufacturing and Engineering',
+    icon: 'Factory',
+    image: 'ind_manufacturing',
+    blurb: 'Develop operators, artisans and supervisors to support safety, quality and productivity.',
+    points: ['Safety competence', 'Supervisor development', 'Skills matrices'],
+  },
+  {
+    id: 'agriculture',
+    name: 'Agriculture and Agri-processing',
+    icon: 'Wrench',
+    image: 'ind_agriculture',
+    blurb: 'Grow practical skills and supervisory capability across seasonal and permanent teams.',
+    points: ['Practical skills', 'Supervisory training', 'On-site application'],
+  },
+  {
+    id: 'logistics',
+    name: 'Logistics and Supply Chain',
+    icon: 'Route',
+    image: 'ind_logistics',
+    blurb: 'Build capable warehouse, distribution and operations teams that keep goods moving.',
+    points: ['Operational competence', 'Team supervision', 'Onboarding at scale'],
   },
   {
     id: 'retail',
-    name: 'Retail & Consumer',
+    name: 'Retail and Consumer',
     icon: 'ShoppingBag',
-    blurb: 'Scale consistent service and store leadership across distributed, high-turnover workforces.',
-    points: ['Frontline onboarding', 'Store manager development', 'Seasonal readiness'],
+    image: 'ind_retail',
+    blurb: 'Develop consistent service and store leadership across large, distributed teams.',
+    points: ['Frontline onboarding', 'Store management', 'Seasonal readiness'],
   },
   {
-    id: 'healthcare',
-    name: 'Healthcare & Life Sciences',
-    icon: 'HeartPulse',
-    blurb: 'Maintain clinical competence and compliance while growing future healthcare leaders.',
-    points: ['Competency assurance', 'Continuing development', 'Compliance evidence'],
-  },
-  {
-    id: 'manufacturing',
-    name: 'Manufacturing & Industrial',
-    icon: 'Factory',
-    blurb: 'Upskill operators and supervisors to drive safety, quality and operational excellence.',
-    points: ['Safety competence', 'Supervisor capability', 'Skills matrices'],
-  },
-  {
-    id: 'technology',
-    name: 'Technology & Telecoms',
-    icon: 'Cpu',
-    blurb: 'Keep pace with change through continuous, role-aware technical and leadership growth.',
-    points: ['Skills currency', 'Engineering pathways', 'Tech leadership'],
+    id: 'professional',
+    name: 'Professional Services',
+    icon: 'Building2',
+    image: 'ind_professional',
+    blurb: 'Support technical growth, client skills and management development in professional firms.',
+    points: ['Technical development', 'Client skills', 'Management development'],
   },
   {
     id: 'public',
-    name: 'Public Sector & NGO',
-    icon: 'Building2',
-    blurb: 'Develop accountable, capable teams that deliver measurable outcomes for communities.',
-    points: ['Capability frameworks', 'Governance & accountability', 'Impact reporting'],
+    name: 'Public Sector',
+    icon: 'Landmark',
+    image: 'ind_public',
+    blurb: 'Develop capable, accountable teams that deliver services to communities.',
+    points: ['Capability frameworks', 'Accountability', 'Skills development'],
   },
 ]
 
-// ---- Resources ----
-export const resourceCategories = ['All', 'Guides', 'Reports', 'Webinars', 'Case Studies']
+// ---- Insights (real informational topics, not research reports) ----
+export const resourceCategories = ['All', 'Guides', 'Sectors']
 
 export const resources = [
   {
     id: 'r1',
     category: 'Guides',
-    title: 'The Workforce Growth Intelligence Playbook',
-    excerpt: 'A practical framework for connecting development activity to measurable business outcomes.',
-    readTime: '12 min read',
-    featured: true,
+    title: 'Understanding QCTO occupational qualifications',
+    excerpt: 'What Occupational Qualifications under the QCTO mean for employers developing their workforce.',
   },
   {
     id: 'r2',
-    category: 'Reports',
-    title: 'State of Manager Accountability 2026',
-    excerpt: 'What separates organisations where managers truly own growth from those where they don’t.',
-    readTime: 'Report',
+    category: 'Guides',
+    title: 'Learnerships for South African employers',
+    excerpt: 'How learnerships work and how they fit into a practical skills-development strategy.',
   },
   {
     id: 'r3',
-    category: 'Webinars',
-    title: 'From Training Spend to Proven ROI',
-    excerpt: 'How to instrument learning so finance and the board finally see the return.',
-    readTime: '45 min',
+    category: 'Guides',
+    title: 'Employed and unemployed learnerships',
+    excerpt: 'The difference between employed and unemployed learnerships and where each one fits.',
   },
   {
     id: 'r4',
-    category: 'Case Studies',
-    title: 'Scaling Capability Across 30 Sites',
-    excerpt: 'How a national retailer standardised growth without slowing the frontline.',
-    readTime: 'Case study',
+    category: 'Guides',
+    title: 'Workplace skills development',
+    excerpt: 'Turning training into skills people actually use in the workplace.',
   },
   {
     id: 'r5',
-    category: 'Guides',
-    title: 'Designing Development Plans People Actually Use',
-    excerpt: 'Principles for personalised plans that stay alive long after the kickoff conversation.',
-    readTime: '9 min read',
+    category: 'Sectors',
+    title: 'Training for manufacturing teams',
+    excerpt: 'Practical approaches to developing operators, supervisors and quality on the factory floor.',
   },
   {
     id: 'r6',
-    category: 'Reports',
-    title: 'The Capability Risk Index',
-    excerpt: 'Spotting capability, compliance and flight risk before it reaches the bottom line.',
-    readTime: 'Report',
+    category: 'Sectors',
+    title: 'Skills development in agriculture',
+    excerpt: 'Building practical skills and supervisory capability across seasonal and permanent teams.',
   },
 ]
 
 // ---- About: values ----
 export const values = [
   {
-    title: 'Evidence first',
-    body: 'We replace assumptions with assessment, behaviour and outcome data at every step.',
-    icon: 'Microscope',
+    title: 'Practical first',
+    body: 'We focus on skills people can apply, not training for its own sake.',
+    icon: 'Wrench',
   },
   {
-    title: 'Growth is a system',
-    body: 'Lasting development comes from connected processes, not one-off training events.',
+    title: 'Development is a process',
+    body: 'Lasting change comes from a connected approach, not one-off events.',
     icon: 'Workflow',
   },
   {
-    title: 'Accountable by design',
-    body: 'We make managers active owners of growth, not bystanders to it.',
+    title: 'Managers matter',
+    body: 'Line managers are part of development, not bystanders to it.',
     icon: 'UserCheck',
   },
   {
-    title: 'Measurable impact',
-    body: 'If it doesn’t change behaviour or performance, it isn’t finished.',
+    title: 'Clear and accountable',
+    body: 'We keep progress visible so everyone knows where things stand.',
     icon: 'Target',
   },
 ]
 
-// ---- About: timeline ----
-export const timeline = [
-  { year: '2014', title: 'Prestige Tutelage founded', body: 'Built on a belief that development should be measurable, not ceremonial.' },
-  { year: '2019', title: 'Capability frameworks at scale', body: 'Partnered with enterprises to standardise how growth is assessed and tracked.' },
-  { year: '2023', title: 'Growth intelligence engine', body: 'Unified assessment, learning and analytics into a single intelligent system.' },
-  { year: '2026', title: 'Prestige Growth Pathways', body: 'The platform brings workforce growth intelligence to every manager and team.' },
-]
-
 // ---- Training Solutions: delivery formats ----
 export const deliveryFormats = [
-  { title: 'Live Facilitation', body: 'Expert-led virtual and in-person sessions that drive engagement and depth.', icon: 'Presentation' },
-  { title: 'Digital & Micro Learning', body: 'On-demand, mobile-first content that fits the flow of work.', icon: 'Smartphone' },
-  { title: 'Coaching & Mentoring', body: 'One-to-one and group coaching to embed behaviour change.', icon: 'MessagesSquare' },
-  { title: 'Workplace Projects', body: 'Applied assignments that prove competence on the job.', icon: 'Wrench' },
+  { title: 'Facilitated training', body: 'Expert-led sessions, in person or online, built for engagement and depth.', icon: 'Presentation' },
+  { title: 'Digital and micro learning', body: 'On-demand, mobile-friendly content that fits into the working day.', icon: 'Smartphone' },
+  { title: 'Coaching and mentoring', body: 'One-to-one and group coaching that helps development take hold.', icon: 'MessagesSquare' },
+  { title: 'Workplace assignments', body: 'Applied tasks that show competence on the job.', icon: 'Wrench' },
 ]
 
-// ---- Generic FAQ (used on Contact / Book pages) ----
+// ---- FAQs (used on Contact) ----
 export const faqs = [
   {
-    q: 'How quickly can we get started?',
-    a: 'Most organisations move from consultation to a configured pilot within a few weeks, depending on scope and integrations.',
+    q: 'How do we get started?',
+    a: 'Most organisations begin with a short consultation to understand your goals, followed by a focused pilot or programme.',
   },
   {
-    q: 'Does the platform integrate with our HR systems?',
-    a: 'Yes. Prestige Growth Pathways is built to integrate with common HRIS, LMS and identity providers.',
+    q: 'Can you work with our existing frameworks?',
+    a: 'Yes. The platform supports custom capability frameworks, role libraries and compliance requirements.',
   },
   {
     q: 'Can we start with a single team?',
-    a: 'Absolutely. Many partners begin with a focused pilot and scale once outcomes are proven.',
+    a: 'Absolutely. Many organisations begin with one team or department and expand once the approach is proven.',
   },
   {
-    q: 'How do you measure ROI?',
-    a: 'The ROI Engine links development activity to performance and productivity indicators that matter to your business.',
+    q: 'How do you support workplace application?',
+    a: 'Workplace assignments, coaching and manager reviews help make sure learning is applied on the job.',
   },
 ]

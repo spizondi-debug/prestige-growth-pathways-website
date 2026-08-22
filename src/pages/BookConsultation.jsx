@@ -1,62 +1,80 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageShell from '../components/layout/PageShell.jsx'
+import Seo from '../components/shared/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
-import Aurora from '../components/shared/Aurora.jsx'
-import IconTile from '../components/shared/IconTile.jsx'
-import { Check, ArrowLeft, CalendarCheck, Phone } from 'lucide-react'
+import Icon from '../components/ui/Icon.jsx'
+import { Check, ArrowLeft, Phone } from 'lucide-react'
 import { contact } from '../data/site.js'
+import { endpoints } from '../data/forms.js'
 
 const field =
-  'w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-heading placeholder:text-muted transition-colors focus:border-prestige-blue focus:outline-none'
+  'w-full rounded-btn border border-line bg-white px-4 py-3 text-sm text-heading placeholder:text-muted focus:border-prestige-blue focus:outline-none'
 
-const steps = ['About you', 'Your goals', 'Schedule']
+const steps = ['About you', 'Your goals']
 
 const expectations = [
-  { icon: 'PhoneCall', title: 'A focused 30-minute call', body: 'No hard sell — a conversation about your workforce growth goals.' },
-  { icon: 'ScanSearch', title: 'A tailored walkthrough', body: 'See the modules most relevant to your sector and challenges.' },
-  { icon: 'Map', title: 'A clear next step', body: 'Leave with a recommended path, whether that’s a pilot or a wider rollout.' },
+  { icon: 'PhoneCall', title: 'A short, no-obligation conversation', body: 'We talk through your goals and current challenges.' },
+  { icon: 'ScanSearch', title: 'A tailored view of how we can help', body: 'We show the training and platform capabilities most relevant to you.' },
+  { icon: 'Map', title: 'A clear next step', body: 'You leave with a recommended way forward, at your pace.' },
 ]
 
 export default function BookConsultation() {
   const [step, setStep] = useState(0)
-  const [done, setDone] = useState(false)
+  // status: idle | submitting | success | fallback
+  const [status, setStatus] = useState('idle')
   const last = steps.length - 1
+  const formRef = { current: null }
 
-  const next = () => (step === last ? setDone(true) : setStep((s) => s + 1))
-  const prev = () => setStep((s) => Math.max(0, s - 1))
+  async function submit(e) {
+    e?.preventDefault?.()
+    if (!endpoints.consultation) {
+      setStatus('fallback')
+      return
+    }
+    setStatus('submitting')
+    try {
+      const res = await fetch(endpoints.consultation, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(formRef.current),
+      })
+      setStatus(res.ok ? 'success' : 'fallback')
+    } catch {
+      setStatus('fallback')
+    }
+  }
+
+  const next = () => (step === last ? submit() : setStep((s) => s + 1))
+  const done = status === 'success' || status === 'fallback'
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-mesh-light pb-20 pt-36 sm:pt-44">
-        <Aurora variant="green" tone="light" />
+      <Seo
+        title="Request a Consultation"
+        description="Request a consultation with Prestige Tutelage to discuss corporate training and workforce development. Call 010 065 0822."
+        path="/book-consultation"
+      />
+      <section className="border-b border-line bg-mist pb-16 pt-32 sm:pt-40">
         <div className="container-px grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          {/* Left: pitch + expectations */}
+          {/* Left */}
           <div>
             <Reveal>
-              <span className="eyebrow mb-6">
-                <span className="h-1.5 w-1.5 rounded-full bg-prestige-green" />
-                Book a Consultation
-              </span>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="text-display-lg font-extrabold text-balance text-heading">
-                See your workforce growth, <span className="text-gradient">made measurable</span>
+              <p className="section-label">Request a consultation</p>
+              <h1 className="text-display-lg font-semibold text-heading">
+                Let’s plan practical development for your people
               </h1>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-body">
-                Book a no-obligation consultation with the Prestige team. We’ll show you exactly how
-                the platform fits your people strategy.
+              <p className="mt-5 max-w-lg text-lg leading-relaxed text-body">
+                Tell us a little about your organisation and goals. We will arrange a convenient time to talk.
               </p>
             </Reveal>
 
-            <div className="mt-10 space-y-4">
+            <div className="mt-9 space-y-5">
               {expectations.map((e, i) => (
-                <Reveal key={e.title} delay={0.15 + i * 0.08}>
-                  <div className="card flex items-start gap-4 p-5">
-                    <IconTile name={e.icon} accent={i % 2 ? 'blue' : 'green'} size="lg" />
+                <Reveal key={e.title} delay={0.1 + i * 0.06}>
+                  <div className="flex items-start gap-3">
+                    <Icon name={e.icon} className="mt-0.5 h-5 w-5 shrink-0 text-prestige-blue" strokeWidth={1.8} />
                     <div>
                       <h3 className="text-base font-semibold text-heading">{e.title}</h3>
                       <p className="mt-1 text-sm text-body">{e.body}</p>
@@ -66,10 +84,9 @@ export default function BookConsultation() {
               ))}
             </div>
 
-            {/* Subtle call alternative */}
-            <Reveal delay={0.4}>
+            <Reveal delay={0.35}>
               <p className="mt-8 text-sm text-body">
-                Prefer to speak to us? Call{' '}
+                Prefer to call? Speak to Prestige on{' '}
                 <a href={contact.phoneHref} className="font-semibold text-prestige-blue hover:text-prestige-blue-deep">
                   {contact.phoneDisplay}
                 </a>
@@ -77,103 +94,89 @@ export default function BookConsultation() {
             </Reveal>
           </div>
 
-          {/* Right: multi-step form */}
-          <Reveal delay={0.15}>
-            <div className="card relative overflow-hidden p-7 sm:p-9">
-              {!done ? (
-                <>
-                  {/* progress */}
-                  <div className="mb-7 flex items-center gap-2">
+          {/* Right: form */}
+          <Reveal delay={0.12}>
+            <div className="card p-7 sm:p-9">
+              {done ? (
+                <div className="flex min-h-[22rem] flex-col items-center justify-center text-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-prestige-blue/10 text-prestige-blue">
+                    <Phone className="h-7 w-7" />
+                  </span>
+                  {status === 'success' ? (
+                    <>
+                      <h2 className="mt-4 text-2xl font-semibold text-heading">Request received</h2>
+                      <p className="mt-2 max-w-sm text-body">
+                        Thank you. A confirmed consultation time will be arranged with you.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="mt-4 text-2xl font-semibold text-heading">Let’s arrange your consultation</h2>
+                      <p className="mt-2 max-w-sm text-body">
+                        Online requests are temporarily unavailable. Please call Prestige on{' '}
+                        <a href={contact.phoneHref} className="font-semibold text-prestige-blue">{contact.phoneDisplay}</a>{' '}
+                        and we will arrange a convenient time.
+                      </p>
+                      <div className="mt-5">
+                        <Button href={contact.phoneHref}>Call Prestige</Button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <form ref={(el) => (formRef.current = el)} onSubmit={submit}>
+                  <div className="mb-6 flex items-center gap-2">
                     {steps.map((s, i) => (
                       <div key={s} className="flex flex-1 items-center gap-2">
                         <span
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
-                            i <= step ? 'bg-brand-gradient text-white' : 'border border-line text-muted'
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+                            i <= step ? 'bg-prestige-blue text-white' : 'border border-line text-muted'
                           }`}
                         >
                           {i < step ? <Check className="h-4 w-4" /> : i + 1}
                         </span>
-                        {i < last && (
-                          <span className={`h-px flex-1 ${i < step ? 'bg-prestige-green' : 'bg-line'}`} />
-                        )}
+                        {i < last && <span className={`h-px flex-1 ${i < step ? 'bg-prestige-blue' : 'bg-line'}`} />}
                       </div>
                     ))}
                   </div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-prestige-green-deep">
-                    Step {step + 1} of {steps.length}
-                  </p>
-                  <h2 className="mt-1 text-2xl font-bold text-heading">{steps[step]}</h2>
+                  <h2 className="text-xl font-semibold text-heading">{steps[step]}</h2>
 
-                  <div className="mt-6 min-h-[16rem]">
+                  <div className="mt-5 min-h-[15rem]">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={step}
-                        initial={{ opacity: 0, x: 24 }}
+                        initial={{ opacity: 0, x: 18 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -24 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        exit={{ opacity: 0, x: -18 }}
+                        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                         className="space-y-4"
                       >
-                        {step === 0 && (
+                        {step === 0 ? (
                           <>
                             <div className="grid gap-4 sm:grid-cols-2">
-                              <input className={field} placeholder="First name" />
-                              <input className={field} placeholder="Last name" />
+                              <input name="firstName" className={field} placeholder="First name" />
+                              <input name="lastName" className={field} placeholder="Last name" />
                             </div>
-                            <input className={field} type="email" placeholder="Work email" />
-                            <input className={field} placeholder="Company" />
+                            <input name="email" className={field} type="email" placeholder="Work email" />
+                            <input name="company" className={field} placeholder="Company" />
                           </>
-                        )}
-                        {step === 1 && (
+                        ) : (
                           <>
-                            <select className={field} defaultValue="">
+                            <select name="size" className={field} defaultValue="">
                               <option value="" disabled>Workforce size</option>
                               <option>1 – 100</option>
                               <option>100 – 1,000</option>
                               <option>1,000 – 10,000</option>
                               <option>10,000+</option>
                             </select>
-                            <select className={field} defaultValue="">
-                              <option value="" disabled>Primary goal</option>
-                              <option>Manager accountability</option>
-                              <option>Measurable ROI</option>
-                              <option>Skills & capability uplift</option>
-                              <option>Compliance & onboarding</option>
+                            <select name="focus" className={field} defaultValue="">
+                              <option value="" disabled>Primary focus</option>
+                              <option>Leadership and management</option>
+                              <option>Technical and functional skills</option>
+                              <option>Behavioural skills</option>
+                              <option>Compliance and onboarding</option>
                             </select>
-                            <textarea className={`${field} min-h-[7rem] resize-y`} placeholder="Anything specific you’d like to cover?" />
-                          </>
-                        )}
-                        {step === 2 && (
-                          <>
-                            <div className="grid grid-cols-3 gap-2">
-                              {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d, i) => (
-                                <button
-                                  key={d}
-                                  type="button"
-                                  className={`rounded-xl border px-3 py-3 text-sm font-medium transition-colors ${
-                                    i === 1 ? 'border-prestige-green/50 bg-mint text-prestige-green-deep' : 'border-line text-body hover:text-heading'
-                                  }`}
-                                >
-                                  {d}
-                                </button>
-                              ))}
-                            </div>
-                            <div className="grid grid-cols-3 gap-2">
-                              {['09:00', '11:00', '13:00', '14:30', '16:00', '17:00'].map((t, i) => (
-                                <button
-                                  key={t}
-                                  type="button"
-                                  className={`rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors ${
-                                    i === 2 ? 'border-prestige-green/50 bg-mint text-prestige-green-deep' : 'border-line text-body hover:text-heading'
-                                  }`}
-                                >
-                                  {t}
-                                </button>
-                              ))}
-                            </div>
-                            <p className="text-xs text-muted">
-                              Calendar placeholder — connect Calendly, HubSpot or your scheduler here.
-                            </p>
+                            <textarea name="notes" className={`${field} min-h-[7rem] resize-y`} placeholder="Anything you would like us to know?" />
                           </>
                         )}
                       </motion.div>
@@ -182,38 +185,18 @@ export default function BookConsultation() {
 
                   <div className="mt-6 flex items-center justify-between gap-3">
                     <button
-                      onClick={prev}
+                      type="button"
+                      onClick={() => setStep((s) => Math.max(0, s - 1))}
                       disabled={step === 0}
-                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-body transition-colors hover:text-heading disabled:opacity-30"
+                      className="inline-flex items-center gap-2 px-2 py-2 text-sm font-medium text-body hover:text-heading disabled:opacity-30"
                     >
                       <ArrowLeft className="h-4 w-4" /> Back
                     </button>
-                    <Button onClick={next} icon={step === last ? undefined : 'ArrowRight'}>
-                      {step === last ? 'Confirm booking' : 'Continue'}
+                    <Button type="button" onClick={next} disabled={status === 'submitting'}>
+                      {step === last ? (status === 'submitting' ? 'Sending…' : 'Request consultation') : 'Continue'}
                     </Button>
                   </div>
-                </>
-              ) : (
-                <div className="flex min-h-[26rem] flex-col items-center justify-center text-center">
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-gradient shadow-glow-green">
-                    <CalendarCheck className="h-10 w-10 text-white" />
-                  </span>
-                  <h2 className="mt-6 text-3xl font-bold text-heading">You’re booked!</h2>
-                  <p className="mt-3 max-w-sm text-body">
-                    This is a demo confirmation. Connect your scheduler and CRM to make it live — a
-                    confirmation email would land in the prospect’s inbox.
-                  </p>
-                  <p className="mt-4 flex items-center gap-2 text-sm text-body">
-                    <Phone className="h-4 w-4 text-prestige-green-deep" />
-                    Prefer to talk now? Call{' '}
-                    <a href={contact.phoneHref} className="font-semibold text-prestige-blue hover:text-prestige-blue-deep">
-                      {contact.phoneDisplay}
-                    </a>
-                  </p>
-                  <Button to="/" variant="secondary" className="mt-7" icon="ArrowRight">
-                    Back to home
-                  </Button>
-                </div>
+                </form>
               )}
             </div>
           </Reveal>
