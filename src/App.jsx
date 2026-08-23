@@ -10,7 +10,6 @@ import About from './pages/About.jsx'
 import Platform from './pages/Platform.jsx'
 import TrainingSolutions from './pages/TrainingSolutions.jsx'
 import Industries from './pages/Industries.jsx'
-import Resources from './pages/Resources.jsx'
 import Contact from './pages/Contact.jsx'
 import BookConsultation from './pages/BookConsultation.jsx'
 import RequestProposal from './pages/RequestProposal.jsx'
@@ -38,7 +37,6 @@ export default function App() {
             <Route path="/platform" element={<Platform />} />
             <Route path="/training-solutions" element={<TrainingSolutions />} />
             <Route path="/industries" element={<Industries />} />
-            <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-consultation" element={<BookConsultation />} />
             <Route path="/request-proposal" element={<RequestProposal />} />
