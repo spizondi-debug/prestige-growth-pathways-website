@@ -58,7 +58,6 @@ export const nav = [
   { label: 'Platform', to: '/platform' },
   { label: 'Training Solutions', to: '/training-solutions' },
   { label: 'Industries', to: '/industries' },
-  { label: 'Resources', to: '/resources' },
   { label: 'Contact', to: '/contact' },
 ]
 
