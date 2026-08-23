@@ -11,7 +11,6 @@ const footerCols = [
       { label: 'Overview', to: '/platform' },
       { label: 'Training Solutions', to: '/training-solutions' },
       { label: 'Industries', to: '/industries' },
-      { label: 'Resources', to: '/resources' },
     ],
   },
   {
