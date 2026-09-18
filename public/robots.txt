@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://growthpathways.prestigetutelage.co.za/sitemap.xml
-
+Sitemap: https://prestigegrowthpathways.co.za/sitemap.xml

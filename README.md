@@ -4,7 +4,7 @@ Marketing website for Prestige Tutelage, built with Vite, React, Tailwind CSS an
 
 ## Production target
 
-https://growthpathways.prestigetutelage.co.za/
+https://prestigegrowthpathways.co.za/
 
 This is a separate website. Do not extract its build into the existing Prestige Tutelage or Zanokuhle document roots.
 
@@ -20,12 +20,12 @@ The production files are generated in `dist/`. Upload the contents, not the cont
 
 ## HostAfrica deployment
 
-1. In cPanel Domains, create `growthpathways.prestigetutelage.co.za`.
-2. Give it a separate document root, for example `/home/prestige/growthpathways.prestigetutelage.co.za`. Do not share `public_html`.
+1. Use the separate HostAfrica domain `prestigegrowthpathways.co.za`.
+2. In File Manager, open `domains/prestigegrowthpathways.co.za/public_html`, as shown in the hosting account. Keep this domain root separate from other websites.
 3. Confirm the domain's document root before uploading.
 4. Back up any files already in that exact document root.
 5. Extract the deployment ZIP there. `index.html`, `.htaccess`, `assets/`, `images/` and `videos/` must be directly inside that root.
-6. Enable SSL/AutoSSL and HTTPS in cPanel after DNS resolves to this hosting account.
+6. Enable SSL and HTTPS in the HostAfrica control panel after DNS resolves to this hosting account.
 7. Test the homepage, a direct link such as `/about`, refreshes, video, mobile navigation and email enquiry links.
 8. Move the uploaded ZIP outside the public document root after extraction.
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const origin = 'https://growthpathways.prestigetutelage.co.za'
+const origin = 'https://prestigegrowthpathways.co.za'
 
 const pages = {
   '/': {
