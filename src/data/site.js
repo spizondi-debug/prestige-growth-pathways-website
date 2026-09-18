@@ -11,6 +11,8 @@ export const contact = {
   phoneDisplay: '010 065 0822',
   phoneHref: 'tel:+27100650822',
   phoneIntl: '+27 10 065 0822',
+  email: 'info@prestigetutelage.co.za',
+  emailHref: 'mailto:info@prestigetutelage.co.za',
   addressLine1: '64 Hill Street',
   suburb: 'Ferndale',
   city: 'Randburg',
@@ -45,10 +47,10 @@ export const site = {
   phone: contact.phoneDisplay,
   address: fullAddress,
   social: {
-    linkedin: '#',
-    x: '#',
-    youtube: '#',
-    instagram: '#',
+    linkedin: '',
+    x: '',
+    youtube: '',
+    instagram: '',
   },
 }
 

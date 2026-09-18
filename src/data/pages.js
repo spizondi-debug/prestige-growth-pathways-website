@@ -1,6 +1,5 @@
 // ============================================================
-// PAGE-SPECIFIC CONTENT — industries, resources, values, etc.
-// Placeholder copy — edit freely.
+// PAGE-SPECIFIC CONTENT — industries, values, delivery formats and FAQs.
 // ============================================================
 
 // ---- Industries ----
@@ -46,55 +45,6 @@ export const industries = [
     icon: 'Building2',
     blurb: 'Develop accountable, capable teams that deliver measurable outcomes for communities.',
     points: ['Capability frameworks', 'Governance & accountability', 'Impact reporting'],
-  },
-]
-
-// ---- Resources ----
-export const resourceCategories = ['All', 'Guides', 'Reports', 'Webinars', 'Case Studies']
-
-export const resources = [
-  {
-    id: 'r1',
-    category: 'Guides',
-    title: 'The Workforce Growth Intelligence Playbook',
-    excerpt: 'A practical framework for connecting development activity to measurable business outcomes.',
-    readTime: '12 min read',
-    featured: true,
-  },
-  {
-    id: 'r2',
-    category: 'Reports',
-    title: 'State of Manager Accountability 2026',
-    excerpt: 'What separates organisations where managers truly own growth from those where they don’t.',
-    readTime: 'Report',
-  },
-  {
-    id: 'r3',
-    category: 'Webinars',
-    title: 'From Training Spend to Proven ROI',
-    excerpt: 'How to instrument learning so finance and the board finally see the return.',
-    readTime: '45 min',
-  },
-  {
-    id: 'r4',
-    category: 'Case Studies',
-    title: 'Scaling Capability Across 30 Sites',
-    excerpt: 'How a national retailer standardised growth without slowing the frontline.',
-    readTime: 'Case study',
-  },
-  {
-    id: 'r5',
-    category: 'Guides',
-    title: 'Designing Development Plans People Actually Use',
-    excerpt: 'Principles for personalised plans that stay alive long after the kickoff conversation.',
-    readTime: '9 min read',
-  },
-  {
-    id: 'r6',
-    category: 'Reports',
-    title: 'The Capability Risk Index',
-    excerpt: 'Spotting capability, compliance and flight risk before it reaches the bottom line.',
-    readTime: 'Report',
   },
 ]
 
@@ -185,11 +135,11 @@ export const deliveryFormats = [
 export const faqs = [
   {
     q: 'How quickly can we get started?',
-    a: 'Most organisations move from consultation to a configured pilot within a few weeks, depending on scope and integrations.',
+    a: 'Timelines depend on your scope, participants and technical requirements. We agree a practical pilot or rollout schedule during consultation.',
   },
   {
     q: 'Does the platform integrate with our HR systems?',
-    a: 'Yes. Prestige Growth Pathways is built to integrate with common HRIS, LMS and identity providers.',
+    a: 'Integration requirements are assessed during discovery. We will confirm the suitable approach for your HRIS, LMS or identity environment before implementation.',
   },
   {
     q: 'Can we start with a single team?',
@@ -197,6 +147,6 @@ export const faqs = [
   },
   {
     q: 'How do you measure ROI?',
-    a: 'The ROI Engine links development activity to performance and productivity indicators that matter to your business.',
+    a: 'We agree relevant indicators during scoping, then connect development activity and workplace evidence to the outcomes your organisation wants to monitor.',
   },
 ]

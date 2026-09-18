@@ -1,6 +1,6 @@
 // ============================================================
 // SHARED CONTENT — hero slides, stats, steps, solutions, etc.
-// All marketing copy is placeholder and safe to edit.
+// Marketing content shared across the public site.
 // ============================================================
 
 // ---- Home hero (3-slide experience) ----
@@ -63,7 +63,7 @@ export const howItWorks = [
 export const credibility = [
   {
     title: 'Built by Prestige Tutelage',
-    body: 'Decades of workforce development expertise, distilled into an enterprise-grade growth platform.',
+    body: 'Practical training and workforce-development experience brought together in a connected growth platform.',
     icon: 'Landmark',
   },
   {
@@ -72,8 +72,8 @@ export const credibility = [
     icon: 'BadgeCheck',
   },
   {
-    title: 'Enterprise-ready & secure',
-    body: 'Designed for scale, governance and integration — trusted to sit at the centre of your people strategy.',
+    title: 'Designed for responsible growth',
+    body: 'Built with governance, evidence and scalable delivery in mind. Integration and security requirements are agreed during scoping.',
     icon: 'ShieldCheck',
   },
   {

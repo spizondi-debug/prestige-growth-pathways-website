@@ -5,14 +5,29 @@ import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import IconTile from '../components/shared/IconTile.jsx'
 import ClosingCTA from '../components/home/ClosingCTA.jsx'
-import { Check, MessageSquare } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { contact } from '../data/site.js'
+import { openEmailDraft } from '../lib/enquiry.js'
 
 const field =
   'w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-heading placeholder:text-muted transition-colors focus:border-prestige-blue focus:outline-none'
 
 export default function RequestProposal() {
   const [sent, setSent] = useState(false)
+
+  const submit = (event) => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    openEmailDraft('Prestige Growth Pathways proposal request', {
+      Name: `${data.get('firstName')} ${data.get('lastName')}`,
+      Email: data.get('email'),
+      Company: data.get('company'),
+      'Workforce size': data.get('workforceSize'),
+      'Primary focus': data.get('primaryFocus'),
+      Requirements: data.get('requirements'),
+    })
+    setSent(true)
+  }
 
   return (
     <PageShell>
@@ -33,41 +48,38 @@ export default function RequestProposal() {
                   <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-gradient">
                     <Check className="h-8 w-8 text-white" />
                   </span>
-                  <h3 className="mt-5 text-2xl font-bold text-heading">Request received</h3>
+                  <h3 className="mt-5 text-2xl font-bold text-heading">Email draft prepared</h3>
                   <p className="mt-2 max-w-sm text-body">
-                    This is a demo submission. Once wired to your CRM, the Prestige team would follow
-                    up with a tailored proposal.
+                    Your email application should now show a prepared proposal request. Review it, then select Send.
                   </p>
+                  <p className="mt-3 text-sm text-body">Nothing opened? Email <a className="underline" href={contact.emailHref}>{contact.email}</a> or call <a className="underline" href={contact.phoneHref}>{contact.phoneDisplay}</a>.</p>
                   <Button className="mt-6" variant="secondary" onClick={() => setSent(false)}>
                     Submit another
                   </Button>
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                    setSent(true)
-                  }}
+                  onSubmit={submit}
                   className="space-y-4"
                 >
                   <h2 className="text-xl font-bold text-heading">Proposal details</h2>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <input className={field} placeholder="First name" required />
-                    <input className={field} placeholder="Last name" required />
+                    <input className={field} name="firstName" autoComplete="given-name" aria-label="First name" placeholder="First name" required />
+                    <input className={field} name="lastName" autoComplete="family-name" aria-label="Last name" placeholder="Last name" required />
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <input className={field} type="email" placeholder="Work email" required />
-                    <input className={field} placeholder="Company" required />
+                    <input className={field} name="email" type="email" autoComplete="email" aria-label="Work email" placeholder="Work email" required />
+                    <input className={field} name="company" autoComplete="organization" aria-label="Company" placeholder="Company" required />
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <select className={field} defaultValue="">
+                    <select className={field} aria-label="workforceSize" name="workforceSize" defaultValue="" required>
                       <option value="" disabled>Workforce size</option>
                       <option>1 – 100</option>
                       <option>100 – 1,000</option>
                       <option>1,000 – 10,000</option>
                       <option>10,000+</option>
                     </select>
-                    <select className={field} defaultValue="">
+                    <select className={field} aria-label="primaryFocus" name="primaryFocus" defaultValue="" required>
                       <option value="" disabled>Primary focus</option>
                       <option>Leadership & management</option>
                       <option>Technical & functional skills</option>
@@ -77,11 +89,13 @@ export default function RequestProposal() {
                   </div>
                   <textarea
                     className={`${field} min-h-[9rem] resize-y`}
-                    placeholder="Tell us about your training or workforce-development requirements"
+                    name="requirements"
+                    aria-label="Tell us about your training or workforce-development requirements" placeholder="Tell us about your training or workforce-development requirements"
+                    required
                   />
                   <Button type="submit" className="w-full" icon="ArrowRight">Request proposal</Button>
                   <p className="text-center text-xs text-muted">
-                    Demo form — not connected to a backend. Wire up to your provider of choice.
+                    This opens a prepared email to {contact.email}. Your details are not stored by this website.
                   </p>
                 </form>
               )}

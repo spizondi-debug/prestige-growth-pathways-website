@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/layout/Navbar.jsx'
 import Footer from './components/layout/Footer.jsx'
 import ScrollProgress from './components/layout/ScrollProgress.jsx'
+import RouteMeta from './components/layout/RouteMeta.jsx'
 
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
@@ -13,6 +14,7 @@ import Industries from './pages/Industries.jsx'
 import Contact from './pages/Contact.jsx'
 import BookConsultation from './pages/BookConsultation.jsx'
 import RequestProposal from './pages/RequestProposal.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -28,6 +30,7 @@ export default function App() {
     <div className="relative min-h-screen">
       <ScrollProgress />
       <ScrollToTop />
+      <RouteMeta />
       <Navbar />
       <main className="relative">
         <AnimatePresence mode="wait">
@@ -40,6 +43,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-consultation" element={<BookConsultation />} />
             <Route path="/request-proposal" element={<RequestProposal />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
       </main>

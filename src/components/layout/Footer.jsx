@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Linkedin, Twitter, Youtube, Instagram, Phone, MapPin } from 'lucide-react'
+import { Linkedin, Twitter, Youtube, Instagram, Phone, MapPin, Mail } from 'lucide-react'
 import Logo from '../shared/Logo.jsx'
 import Button from '../ui/Button.jsx'
 import { site, primaryCta, contact } from '../../data/site.js'
@@ -110,6 +110,10 @@ export default function Footer() {
                   <Phone className="h-4 w-4 shrink-0 text-prestige-green-bright" />
                   {contact.phoneDisplay}
                 </a>
+                <a href={contact.emailHref} className="flex items-center gap-3 font-medium text-cloud-100 transition-colors hover:text-white">
+                  <Mail className="h-4 w-4 shrink-0 text-prestige-green-bright" />
+                  {contact.email}
+                </a>
               </address>
 
               <div className="mt-5 flex items-center gap-3">
@@ -118,7 +122,7 @@ export default function Footer() {
                   { Icon: Twitter, href: site.social.x, label: 'X' },
                   { Icon: Youtube, href: site.social.youtube, label: 'YouTube' },
                   { Icon: Instagram, href: site.social.instagram, label: 'Instagram' },
-                ].map(({ Icon, href, label }) => (
+                ].filter(({ href }) => href).map(({ Icon, href, label }) => (
                   <a
                     key={label}
                     href={href}
@@ -135,10 +139,7 @@ export default function Footer() {
           <div className="hairline-on-dark mt-10" />
           <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-cloud-200/50 sm:flex-row">
             <p>© {new Date().getFullYear()} {contact.company}. All rights reserved.</p>
-            <p className="flex items-center gap-4">
-              <a href="#" className="hover:text-white">Privacy</a>
-              <a href="#" className="hover:text-white">Terms</a>
-            </p>
+            <a href={contact.emailHref} className="hover:text-white">Privacy enquiries: {contact.email}</a>
           </div>
         </div>
       </div>
