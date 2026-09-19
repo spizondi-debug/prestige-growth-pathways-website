@@ -1,0 +1,73 @@
+# Builds the Vite site and deploys it to GitHub Pages.
+#
+# One-time setup in the repo: Settings → Pages → "Build and deployment" →
+# Source: "GitHub Actions". (The configure-pages step below also attempts to
+# enable it automatically.)
+#
+# Live URL will be: https://<owner>.github.io/<repo>/
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - 'claude/**' # allow previewing feature branches before merge
+  workflow_dispatch: # lets you run it manually from any branch
+
+# Allow the workflow to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time; newer runs cancel in-progress ones.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # base_path comes from configure-pages (e.g. "/<repo>/"), so assets and
+      # routing resolve correctly under the Pages sub-path.
+      - name: Build
+        run: npm run build -- --base="${{ steps.pages.outputs.base_path }}/"
+
+      # SPA fallback: serve index.html for unknown client-side routes.
+      - name: Add SPA 404 fallback
+        run: cp dist/index.html dist/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
